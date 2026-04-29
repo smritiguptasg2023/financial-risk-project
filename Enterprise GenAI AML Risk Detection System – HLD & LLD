@@ -1,0 +1,44 @@
+HIGH LEVEL DESIGN (HLD) :
+    This system is an end-to-end GenAI-powered AML (Anti-Money Laundering) risk detection platform designed to analyze financial transactions and classify risk using Multi-Agent architecture and RAG-based contextual reasoning.
+
+    System Flow
+        Transaction data is ingested into Databricks Lakehouse
+        Data is processed through Bronze → Silver → Gold layers
+        Gold layer is exposed to FastAPI inference service
+        Orchestrator manages request flow
+        Multi-Agent system processes request:
+        Retriever Agent → fetches policy context using FAISS
+        Reasoning Agent → generates explanation
+        Validation Agent → applies AML rules
+        Final response includes risk score, flags, and reasoning
+    Architecture Layers
+        Data Layer (Databricks Lakehouse)
+        API Layer (FastAPI)
+        Orchestration Layer
+        Multi-Agent Layer
+        RAG Layer (FAISS Vector DB)
+        Security Layer (RBAC + Guardrails)
+        LLMOps Layer (Logging + Monitoring)
+LOW LEVEL DESIGN (LLD) :
+    Databricks Pipeline
+        Bronze: Raw ingestion of transactions
+        Silver: Data cleaning, type casting, deduplication
+        Gold: Risk scoring + feature enrichment
+    RAG Pipeline
+        Policy documents embedded using SentenceTransformer
+        Stored in FAISS index
+        Query → embedding → similarity search → top-k context retrieval
+    Multi-Agent System
+        Retriever Agent: Fetches relevant compliance policies
+        Reasoner Agent: Generates AML explanation using context
+        Validator Agent: Applies rule-based risk checks
+    Risk Scoring Logic
+        High amount (>10,000) → risk increase
+        High-risk countries → risk increase
+        Crypto/investment → risk increase
+        High transaction frequency → risk increase
+    Security Layer
+        Role-Based Access Control (RBAC)
+        Prompt Injection Detection
+        Sensitive Data Masking
+        Audit Logging
