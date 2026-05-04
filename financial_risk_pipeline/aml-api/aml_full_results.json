@@ -1,0 +1,1820 @@
+[
+  {
+    "status": "SUCCESS",
+    "txn": {
+      "txn_id": "TXN001",
+      "customer_id": "****",
+      "amount": 15000,
+      "country": "Singapore",
+      "risk_score": 2,
+      "risk_category": "High"
+    },
+    "route": [
+      "retriever",
+      "reasoner",
+      "validator"
+    ],
+    "docs": [
+      "Frequent transfers indicate structuring risk",
+      "Transactions above 10000 must be flagged"
+    ],
+    "reasoning": {
+      "txn_id": "TXN001",
+      "decision_basis": [
+        "Frequent transfers indicate structuring risk",
+        "Transactions above 10000 must be flagged"
+      ],
+      "risk_factors": [
+        "High Value Transaction"
+      ],
+      "policy_references": [
+        "Frequent transfers indicate structuring risk",
+        "Transactions above 10000 must be flagged"
+      ],
+      "summary": "Transaction exceeds AML threshold"
+    },
+    "validation": {
+      "flags": [
+        "High Value"
+      ],
+      "confidence": "Medium",
+      "rule_hits": {
+        "high_value": true,
+        "sanctioned_country": false,
+        "policy_triggered": false
+      }
+    },
+    "flags": [
+      "High Value"
+    ],
+    "confidence": "Medium",
+    "risk_score": 2,
+    "risk_band": "High",
+    "metrics": {
+      "txn_id": "TXN001",
+      "retrieval_time": 0.03285646438598633,
+      "reasoning_time": 0.0008294582366943359,
+      "validation_time": 0.0007050037384033203,
+      "total_flags": 1,
+      "timestamp": 1777869642.2436483
+    },
+    "ai_lineage": [
+      {
+        "stage": "retrieval",
+        "timestamp": 1777867226.9418483,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "reasoning",
+        "timestamp": 1777867226.9425304,
+        "input": "{'txn_id': 'TXN001', 'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}",
+        "output": "{'reasoning': {'txn_id': 'TXN001', 'decision_basis': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'risk_factors': ['High Value Transaction'], 'policy_references': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'summary': 'Transaction exceeds AML threshold'}}"
+      },
+      {
+        "stage": "validation",
+        "timestamp": 1777867226.9430907,
+        "input": "{'txn': {'txn_id': 'TXN001', 'customer_id': '****', 'amount': 15000, 'country': 'Singapore', 'risk_score': 2, 'risk_category': 'High'}}",
+        "output": "{'flags': ['High Value'], 'confidence': 'Medium', 'rule_hits': {'high_value': True, 'sanctioned_country': False, 'policy_triggered': False}}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777867226.9447088,
+        "input": "{'txn': {'txn_id': 'TXN001', 'customer_id': '****', 'amount': 15000, 'country': 'Singapore', 'risk_score': 2, 'risk_category': 'High'}, 'route': ['retriever', 'reasoner', 'validator']}",
+        "output": "{'flags': ['High Value'], 'risk_score': 2, 'confidence': 'Medium', 'risk_band': 'High'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869484.9557924,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "reasoning",
+        "timestamp": 1777869484.956717,
+        "input": "{'txn_id': 'TXN001', 'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}",
+        "output": "{'reasoning': {'txn_id': 'TXN001', 'decision_basis': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'risk_factors': ['High Value Transaction'], 'policy_references': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'summary': 'Transaction exceeds AML threshold'}}"
+      },
+      {
+        "stage": "validation",
+        "timestamp": 1777869484.9575603,
+        "input": "{'txn': {'txn_id': 'TXN001', 'customer_id': '****', 'amount': 15000, 'country': 'Singapore', 'risk_score': 2, 'risk_category': 'High'}}",
+        "output": "{'flags': ['High Value'], 'confidence': 'Medium', 'rule_hits': {'high_value': True, 'sanctioned_country': False, 'policy_triggered': False}}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869484.959774,
+        "input": "{'txn': {'txn_id': 'TXN001', 'customer_id': '****', 'amount': 15000, 'country': 'Singapore', 'risk_score': 2, 'risk_category': 'High'}, 'route': ['retriever', 'reasoner', 'validator']}",
+        "output": "{'flags': ['High Value'], 'risk_score': 2, 'confidence': 'Medium', 'risk_band': 'High'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869484.9938505,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869484.9984076,
+        "input": "{'txn': {'txn_id': 'TXN002', 'customer_id': '****', 'amount': 500, 'country': 'Singapore', 'risk_score': 1, 'risk_category': 'Low'}, 'route': ['retriever']}",
+        "output": "{'flags': [], 'risk_score': 1, 'confidence': 'Low', 'risk_band': 'Low'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869485.054833,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "reasoning",
+        "timestamp": 1777869485.056155,
+        "input": "{'txn_id': 'TXN003', 'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}",
+        "output": "{'reasoning': {'txn_id': 'TXN003', 'decision_basis': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'risk_factors': ['High Value Transaction'], 'policy_references': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'summary': 'Transaction exceeds AML threshold'}}"
+      },
+      {
+        "stage": "validation",
+        "timestamp": 1777869485.0573423,
+        "input": "{'txn': {'txn_id': 'TXN003', 'customer_id': '****', 'amount': 25000, 'country': 'Nigeria', 'risk_score': 6, 'risk_category': 'High'}}",
+        "output": "{'flags': ['High Value', 'Sanctioned'], 'confidence': 'High', 'rule_hits': {'high_value': True, 'sanctioned_country': True, 'policy_triggered': False}}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869485.0602155,
+        "input": "{'txn': {'txn_id': 'TXN003', 'customer_id': '****', 'amount': 25000, 'country': 'Nigeria', 'risk_score': 6, 'risk_category': 'High'}, 'route': ['retriever', 'reasoner', 'validator']}",
+        "output": "{'flags': ['High Value', 'Sanctioned'], 'risk_score': 6, 'confidence': 'High', 'risk_band': 'High'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869485.100147,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869485.1021025,
+        "input": "{'txn': {'txn_id': 'TXN004', 'customer_id': '****', 'amount': 8000, 'country': 'India', 'risk_score': 1, 'risk_category': 'Low'}, 'route': ['retriever']}",
+        "output": "{'flags': [], 'risk_score': 1, 'confidence': 'Low', 'risk_band': 'Low'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869485.1425347,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "reasoning",
+        "timestamp": 1777869485.143526,
+        "input": "{'txn_id': 'TXN005', 'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}",
+        "output": "{'reasoning': {'txn_id': 'TXN005', 'decision_basis': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'risk_factors': ['High Value Transaction'], 'policy_references': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'summary': 'Transaction exceeds AML threshold'}}"
+      },
+      {
+        "stage": "validation",
+        "timestamp": 1777869485.144229,
+        "input": "{'txn': {'txn_id': 'TXN005', 'customer_id': '****', 'amount': 12000, 'country': 'North Korea', 'risk_score': 5, 'risk_category': 'High'}}",
+        "output": "{'flags': ['High Value', 'Sanctioned'], 'confidence': 'High', 'rule_hits': {'high_value': True, 'sanctioned_country': True, 'policy_triggered': False}}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869485.1461425,
+        "input": "{'txn': {'txn_id': 'TXN005', 'customer_id': '****', 'amount': 12000, 'country': 'North Korea', 'risk_score': 5, 'risk_category': 'High'}, 'route': ['retriever', 'reasoner', 'validator']}",
+        "output": "{'flags': ['High Value', 'Sanctioned'], 'risk_score': 5, 'confidence': 'High', 'risk_band': 'High'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869508.6780698,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "reasoning",
+        "timestamp": 1777869508.6789167,
+        "input": "{'txn_id': 'TXN001', 'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}",
+        "output": "{'reasoning': {'txn_id': 'TXN001', 'decision_basis': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'risk_factors': ['High Value Transaction'], 'policy_references': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'summary': 'Transaction exceeds AML threshold'}}"
+      },
+      {
+        "stage": "validation",
+        "timestamp": 1777869508.6798978,
+        "input": "{'txn': {'txn_id': 'TXN001', 'customer_id': '****', 'amount': 15000, 'country': 'Singapore', 'risk_score': 2, 'risk_category': 'High'}}",
+        "output": "{'flags': ['High Value'], 'confidence': 'Medium', 'rule_hits': {'high_value': True, 'sanctioned_country': False, 'policy_triggered': False}}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869508.6815515,
+        "input": "{'txn': {'txn_id': 'TXN001', 'customer_id': '****', 'amount': 15000, 'country': 'Singapore', 'risk_score': 2, 'risk_category': 'High'}, 'route': ['retriever', 'reasoner', 'validator']}",
+        "output": "{'flags': ['High Value'], 'risk_score': 2, 'confidence': 'Medium', 'risk_band': 'High'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869508.7053714,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869508.7078936,
+        "input": "{'txn': {'txn_id': 'TXN002', 'customer_id': '****', 'amount': 500, 'country': 'Singapore', 'risk_score': 1, 'risk_category': 'Low'}, 'route': ['retriever']}",
+        "output": "{'flags': [], 'risk_score': 1, 'confidence': 'Low', 'risk_band': 'Low'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869508.733988,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "reasoning",
+        "timestamp": 1777869508.7358162,
+        "input": "{'txn_id': 'TXN003', 'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}",
+        "output": "{'reasoning': {'txn_id': 'TXN003', 'decision_basis': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'risk_factors': ['High Value Transaction'], 'policy_references': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'summary': 'Transaction exceeds AML threshold'}}"
+      },
+      {
+        "stage": "validation",
+        "timestamp": 1777869508.7364495,
+        "input": "{'txn': {'txn_id': 'TXN003', 'customer_id': '****', 'amount': 25000, 'country': 'Nigeria', 'risk_score': 6, 'risk_category': 'High'}}",
+        "output": "{'flags': ['High Value', 'Sanctioned'], 'confidence': 'High', 'rule_hits': {'high_value': True, 'sanctioned_country': True, 'policy_triggered': False}}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869508.7377884,
+        "input": "{'txn': {'txn_id': 'TXN003', 'customer_id': '****', 'amount': 25000, 'country': 'Nigeria', 'risk_score': 6, 'risk_category': 'High'}, 'route': ['retriever', 'reasoner', 'validator']}",
+        "output": "{'flags': ['High Value', 'Sanctioned'], 'risk_score': 6, 'confidence': 'High', 'risk_band': 'High'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869508.7696998,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869508.7717745,
+        "input": "{'txn': {'txn_id': 'TXN004', 'customer_id': '****', 'amount': 8000, 'country': 'India', 'risk_score': 1, 'risk_category': 'Low'}, 'route': ['retriever']}",
+        "output": "{'flags': [], 'risk_score': 1, 'confidence': 'Low', 'risk_band': 'Low'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869508.8006594,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "reasoning",
+        "timestamp": 1777869508.8017592,
+        "input": "{'txn_id': 'TXN005', 'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}",
+        "output": "{'reasoning': {'txn_id': 'TXN005', 'decision_basis': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'risk_factors': ['High Value Transaction'], 'policy_references': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'summary': 'Transaction exceeds AML threshold'}}"
+      },
+      {
+        "stage": "validation",
+        "timestamp": 1777869508.8024678,
+        "input": "{'txn': {'txn_id': 'TXN005', 'customer_id': '****', 'amount': 12000, 'country': 'North Korea', 'risk_score': 5, 'risk_category': 'High'}}",
+        "output": "{'flags': ['High Value', 'Sanctioned'], 'confidence': 'High', 'rule_hits': {'high_value': True, 'sanctioned_country': True, 'policy_triggered': False}}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869508.8041584,
+        "input": "{'txn': {'txn_id': 'TXN005', 'customer_id': '****', 'amount': 12000, 'country': 'North Korea', 'risk_score': 5, 'risk_category': 'High'}, 'route': ['retriever', 'reasoner', 'validator']}",
+        "output": "{'flags': ['High Value', 'Sanctioned'], 'risk_score': 5, 'confidence': 'High', 'risk_band': 'High'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869642.2408326,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "reasoning",
+        "timestamp": 1777869642.2421386,
+        "input": "{'txn_id': 'TXN001', 'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}",
+        "output": "{'reasoning': {'txn_id': 'TXN001', 'decision_basis': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'risk_factors': ['High Value Transaction'], 'policy_references': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'summary': 'Transaction exceeds AML threshold'}}"
+      },
+      {
+        "stage": "validation",
+        "timestamp": 1777869642.2429557,
+        "input": "{'txn': {'txn_id': 'TXN001', 'customer_id': '****', 'amount': 15000, 'country': 'Singapore', 'risk_score': 2, 'risk_category': 'High'}}",
+        "output": "{'flags': ['High Value'], 'confidence': 'Medium', 'rule_hits': {'high_value': True, 'sanctioned_country': False, 'policy_triggered': False}}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869642.2453718,
+        "input": "{'txn': {'txn_id': 'TXN001', 'customer_id': '****', 'amount': 15000, 'country': 'Singapore', 'risk_score': 2, 'risk_category': 'High'}, 'route': ['retriever', 'reasoner', 'validator']}",
+        "output": "{'flags': ['High Value'], 'risk_score': 2, 'confidence': 'Medium', 'risk_band': 'High'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869642.27464,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869642.2772694,
+        "input": "{'txn': {'txn_id': 'TXN002', 'customer_id': '****', 'amount': 500, 'country': 'Singapore', 'risk_score': 1, 'risk_category': 'Low'}, 'route': ['retriever']}",
+        "output": "{'flags': [], 'risk_score': 1, 'confidence': 'Low', 'risk_band': 'Low'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869642.3046682,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "reasoning",
+        "timestamp": 1777869642.3066635,
+        "input": "{'txn_id': 'TXN003', 'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}",
+        "output": "{'reasoning': {'txn_id': 'TXN003', 'decision_basis': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'risk_factors': ['High Value Transaction'], 'policy_references': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'summary': 'Transaction exceeds AML threshold'}}"
+      },
+      {
+        "stage": "validation",
+        "timestamp": 1777869642.30861,
+        "input": "{'txn': {'txn_id': 'TXN003', 'customer_id': '****', 'amount': 25000, 'country': 'Nigeria', 'risk_score': 6, 'risk_category': 'High'}}",
+        "output": "{'flags': ['High Value', 'Sanctioned'], 'confidence': 'High', 'rule_hits': {'high_value': True, 'sanctioned_country': True, 'policy_triggered': False}}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869642.3108864,
+        "input": "{'txn': {'txn_id': 'TXN003', 'customer_id': '****', 'amount': 25000, 'country': 'Nigeria', 'risk_score': 6, 'risk_category': 'High'}, 'route': ['retriever', 'reasoner', 'validator']}",
+        "output": "{'flags': ['High Value', 'Sanctioned'], 'risk_score': 6, 'confidence': 'High', 'risk_band': 'High'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869642.3461823,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869642.3497806,
+        "input": "{'txn': {'txn_id': 'TXN004', 'customer_id': '****', 'amount': 8000, 'country': 'India', 'risk_score': 1, 'risk_category': 'Low'}, 'route': ['retriever']}",
+        "output": "{'flags': [], 'risk_score': 1, 'confidence': 'Low', 'risk_band': 'Low'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869642.3742654,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "reasoning",
+        "timestamp": 1777869642.3757834,
+        "input": "{'txn_id': 'TXN005', 'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}",
+        "output": "{'reasoning': {'txn_id': 'TXN005', 'decision_basis': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'risk_factors': ['High Value Transaction'], 'policy_references': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'summary': 'Transaction exceeds AML threshold'}}"
+      },
+      {
+        "stage": "validation",
+        "timestamp": 1777869642.3762925,
+        "input": "{'txn': {'txn_id': 'TXN005', 'customer_id': '****', 'amount': 12000, 'country': 'North Korea', 'risk_score': 5, 'risk_category': 'High'}}",
+        "output": "{'flags': ['High Value', 'Sanctioned'], 'confidence': 'High', 'rule_hits': {'high_value': True, 'sanctioned_country': True, 'policy_triggered': False}}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869642.3777847,
+        "input": "{'txn': {'txn_id': 'TXN005', 'customer_id': '****', 'amount': 12000, 'country': 'North Korea', 'risk_score': 5, 'risk_category': 'High'}, 'route': ['retriever', 'reasoner', 'validator']}",
+        "output": "{'flags': ['High Value', 'Sanctioned'], 'risk_score': 5, 'confidence': 'High', 'risk_band': 'High'}"
+      }
+    ]
+  },
+  {
+    "status": "SUCCESS",
+    "txn": {
+      "txn_id": "TXN002",
+      "customer_id": "****",
+      "amount": 500,
+      "country": "Singapore",
+      "risk_score": 1,
+      "risk_category": "Low"
+    },
+    "route": [
+      "retriever"
+    ],
+    "docs": [
+      "Frequent transfers indicate structuring risk",
+      "Transactions above 10000 must be flagged"
+    ],
+    "reasoning": null,
+    "validation": null,
+    "flags": [],
+    "confidence": "Low",
+    "risk_score": 1,
+    "risk_band": "Low",
+    "metrics": {
+      "txn_id": "TXN002",
+      "retrieval_time": 0.02968764305114746,
+      "reasoning_time": 0,
+      "validation_time": 0,
+      "total_flags": 0,
+      "timestamp": 1777869642.275963
+    },
+    "ai_lineage": [
+      {
+        "stage": "retrieval",
+        "timestamp": 1777867226.9418483,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "reasoning",
+        "timestamp": 1777867226.9425304,
+        "input": "{'txn_id': 'TXN001', 'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}",
+        "output": "{'reasoning': {'txn_id': 'TXN001', 'decision_basis': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'risk_factors': ['High Value Transaction'], 'policy_references': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'summary': 'Transaction exceeds AML threshold'}}"
+      },
+      {
+        "stage": "validation",
+        "timestamp": 1777867226.9430907,
+        "input": "{'txn': {'txn_id': 'TXN001', 'customer_id': '****', 'amount': 15000, 'country': 'Singapore', 'risk_score': 2, 'risk_category': 'High'}}",
+        "output": "{'flags': ['High Value'], 'confidence': 'Medium', 'rule_hits': {'high_value': True, 'sanctioned_country': False, 'policy_triggered': False}}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777867226.9447088,
+        "input": "{'txn': {'txn_id': 'TXN001', 'customer_id': '****', 'amount': 15000, 'country': 'Singapore', 'risk_score': 2, 'risk_category': 'High'}, 'route': ['retriever', 'reasoner', 'validator']}",
+        "output": "{'flags': ['High Value'], 'risk_score': 2, 'confidence': 'Medium', 'risk_band': 'High'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869484.9557924,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "reasoning",
+        "timestamp": 1777869484.956717,
+        "input": "{'txn_id': 'TXN001', 'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}",
+        "output": "{'reasoning': {'txn_id': 'TXN001', 'decision_basis': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'risk_factors': ['High Value Transaction'], 'policy_references': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'summary': 'Transaction exceeds AML threshold'}}"
+      },
+      {
+        "stage": "validation",
+        "timestamp": 1777869484.9575603,
+        "input": "{'txn': {'txn_id': 'TXN001', 'customer_id': '****', 'amount': 15000, 'country': 'Singapore', 'risk_score': 2, 'risk_category': 'High'}}",
+        "output": "{'flags': ['High Value'], 'confidence': 'Medium', 'rule_hits': {'high_value': True, 'sanctioned_country': False, 'policy_triggered': False}}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869484.959774,
+        "input": "{'txn': {'txn_id': 'TXN001', 'customer_id': '****', 'amount': 15000, 'country': 'Singapore', 'risk_score': 2, 'risk_category': 'High'}, 'route': ['retriever', 'reasoner', 'validator']}",
+        "output": "{'flags': ['High Value'], 'risk_score': 2, 'confidence': 'Medium', 'risk_band': 'High'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869484.9938505,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869484.9984076,
+        "input": "{'txn': {'txn_id': 'TXN002', 'customer_id': '****', 'amount': 500, 'country': 'Singapore', 'risk_score': 1, 'risk_category': 'Low'}, 'route': ['retriever']}",
+        "output": "{'flags': [], 'risk_score': 1, 'confidence': 'Low', 'risk_band': 'Low'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869485.054833,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "reasoning",
+        "timestamp": 1777869485.056155,
+        "input": "{'txn_id': 'TXN003', 'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}",
+        "output": "{'reasoning': {'txn_id': 'TXN003', 'decision_basis': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'risk_factors': ['High Value Transaction'], 'policy_references': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'summary': 'Transaction exceeds AML threshold'}}"
+      },
+      {
+        "stage": "validation",
+        "timestamp": 1777869485.0573423,
+        "input": "{'txn': {'txn_id': 'TXN003', 'customer_id': '****', 'amount': 25000, 'country': 'Nigeria', 'risk_score': 6, 'risk_category': 'High'}}",
+        "output": "{'flags': ['High Value', 'Sanctioned'], 'confidence': 'High', 'rule_hits': {'high_value': True, 'sanctioned_country': True, 'policy_triggered': False}}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869485.0602155,
+        "input": "{'txn': {'txn_id': 'TXN003', 'customer_id': '****', 'amount': 25000, 'country': 'Nigeria', 'risk_score': 6, 'risk_category': 'High'}, 'route': ['retriever', 'reasoner', 'validator']}",
+        "output": "{'flags': ['High Value', 'Sanctioned'], 'risk_score': 6, 'confidence': 'High', 'risk_band': 'High'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869485.100147,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869485.1021025,
+        "input": "{'txn': {'txn_id': 'TXN004', 'customer_id': '****', 'amount': 8000, 'country': 'India', 'risk_score': 1, 'risk_category': 'Low'}, 'route': ['retriever']}",
+        "output": "{'flags': [], 'risk_score': 1, 'confidence': 'Low', 'risk_band': 'Low'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869485.1425347,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "reasoning",
+        "timestamp": 1777869485.143526,
+        "input": "{'txn_id': 'TXN005', 'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}",
+        "output": "{'reasoning': {'txn_id': 'TXN005', 'decision_basis': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'risk_factors': ['High Value Transaction'], 'policy_references': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'summary': 'Transaction exceeds AML threshold'}}"
+      },
+      {
+        "stage": "validation",
+        "timestamp": 1777869485.144229,
+        "input": "{'txn': {'txn_id': 'TXN005', 'customer_id': '****', 'amount': 12000, 'country': 'North Korea', 'risk_score': 5, 'risk_category': 'High'}}",
+        "output": "{'flags': ['High Value', 'Sanctioned'], 'confidence': 'High', 'rule_hits': {'high_value': True, 'sanctioned_country': True, 'policy_triggered': False}}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869485.1461425,
+        "input": "{'txn': {'txn_id': 'TXN005', 'customer_id': '****', 'amount': 12000, 'country': 'North Korea', 'risk_score': 5, 'risk_category': 'High'}, 'route': ['retriever', 'reasoner', 'validator']}",
+        "output": "{'flags': ['High Value', 'Sanctioned'], 'risk_score': 5, 'confidence': 'High', 'risk_band': 'High'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869508.6780698,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "reasoning",
+        "timestamp": 1777869508.6789167,
+        "input": "{'txn_id': 'TXN001', 'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}",
+        "output": "{'reasoning': {'txn_id': 'TXN001', 'decision_basis': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'risk_factors': ['High Value Transaction'], 'policy_references': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'summary': 'Transaction exceeds AML threshold'}}"
+      },
+      {
+        "stage": "validation",
+        "timestamp": 1777869508.6798978,
+        "input": "{'txn': {'txn_id': 'TXN001', 'customer_id': '****', 'amount': 15000, 'country': 'Singapore', 'risk_score': 2, 'risk_category': 'High'}}",
+        "output": "{'flags': ['High Value'], 'confidence': 'Medium', 'rule_hits': {'high_value': True, 'sanctioned_country': False, 'policy_triggered': False}}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869508.6815515,
+        "input": "{'txn': {'txn_id': 'TXN001', 'customer_id': '****', 'amount': 15000, 'country': 'Singapore', 'risk_score': 2, 'risk_category': 'High'}, 'route': ['retriever', 'reasoner', 'validator']}",
+        "output": "{'flags': ['High Value'], 'risk_score': 2, 'confidence': 'Medium', 'risk_band': 'High'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869508.7053714,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869508.7078936,
+        "input": "{'txn': {'txn_id': 'TXN002', 'customer_id': '****', 'amount': 500, 'country': 'Singapore', 'risk_score': 1, 'risk_category': 'Low'}, 'route': ['retriever']}",
+        "output": "{'flags': [], 'risk_score': 1, 'confidence': 'Low', 'risk_band': 'Low'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869508.733988,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "reasoning",
+        "timestamp": 1777869508.7358162,
+        "input": "{'txn_id': 'TXN003', 'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}",
+        "output": "{'reasoning': {'txn_id': 'TXN003', 'decision_basis': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'risk_factors': ['High Value Transaction'], 'policy_references': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'summary': 'Transaction exceeds AML threshold'}}"
+      },
+      {
+        "stage": "validation",
+        "timestamp": 1777869508.7364495,
+        "input": "{'txn': {'txn_id': 'TXN003', 'customer_id': '****', 'amount': 25000, 'country': 'Nigeria', 'risk_score': 6, 'risk_category': 'High'}}",
+        "output": "{'flags': ['High Value', 'Sanctioned'], 'confidence': 'High', 'rule_hits': {'high_value': True, 'sanctioned_country': True, 'policy_triggered': False}}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869508.7377884,
+        "input": "{'txn': {'txn_id': 'TXN003', 'customer_id': '****', 'amount': 25000, 'country': 'Nigeria', 'risk_score': 6, 'risk_category': 'High'}, 'route': ['retriever', 'reasoner', 'validator']}",
+        "output": "{'flags': ['High Value', 'Sanctioned'], 'risk_score': 6, 'confidence': 'High', 'risk_band': 'High'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869508.7696998,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869508.7717745,
+        "input": "{'txn': {'txn_id': 'TXN004', 'customer_id': '****', 'amount': 8000, 'country': 'India', 'risk_score': 1, 'risk_category': 'Low'}, 'route': ['retriever']}",
+        "output": "{'flags': [], 'risk_score': 1, 'confidence': 'Low', 'risk_band': 'Low'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869508.8006594,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "reasoning",
+        "timestamp": 1777869508.8017592,
+        "input": "{'txn_id': 'TXN005', 'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}",
+        "output": "{'reasoning': {'txn_id': 'TXN005', 'decision_basis': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'risk_factors': ['High Value Transaction'], 'policy_references': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'summary': 'Transaction exceeds AML threshold'}}"
+      },
+      {
+        "stage": "validation",
+        "timestamp": 1777869508.8024678,
+        "input": "{'txn': {'txn_id': 'TXN005', 'customer_id': '****', 'amount': 12000, 'country': 'North Korea', 'risk_score': 5, 'risk_category': 'High'}}",
+        "output": "{'flags': ['High Value', 'Sanctioned'], 'confidence': 'High', 'rule_hits': {'high_value': True, 'sanctioned_country': True, 'policy_triggered': False}}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869508.8041584,
+        "input": "{'txn': {'txn_id': 'TXN005', 'customer_id': '****', 'amount': 12000, 'country': 'North Korea', 'risk_score': 5, 'risk_category': 'High'}, 'route': ['retriever', 'reasoner', 'validator']}",
+        "output": "{'flags': ['High Value', 'Sanctioned'], 'risk_score': 5, 'confidence': 'High', 'risk_band': 'High'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869642.2408326,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "reasoning",
+        "timestamp": 1777869642.2421386,
+        "input": "{'txn_id': 'TXN001', 'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}",
+        "output": "{'reasoning': {'txn_id': 'TXN001', 'decision_basis': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'risk_factors': ['High Value Transaction'], 'policy_references': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'summary': 'Transaction exceeds AML threshold'}}"
+      },
+      {
+        "stage": "validation",
+        "timestamp": 1777869642.2429557,
+        "input": "{'txn': {'txn_id': 'TXN001', 'customer_id': '****', 'amount': 15000, 'country': 'Singapore', 'risk_score': 2, 'risk_category': 'High'}}",
+        "output": "{'flags': ['High Value'], 'confidence': 'Medium', 'rule_hits': {'high_value': True, 'sanctioned_country': False, 'policy_triggered': False}}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869642.2453718,
+        "input": "{'txn': {'txn_id': 'TXN001', 'customer_id': '****', 'amount': 15000, 'country': 'Singapore', 'risk_score': 2, 'risk_category': 'High'}, 'route': ['retriever', 'reasoner', 'validator']}",
+        "output": "{'flags': ['High Value'], 'risk_score': 2, 'confidence': 'Medium', 'risk_band': 'High'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869642.27464,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869642.2772694,
+        "input": "{'txn': {'txn_id': 'TXN002', 'customer_id': '****', 'amount': 500, 'country': 'Singapore', 'risk_score': 1, 'risk_category': 'Low'}, 'route': ['retriever']}",
+        "output": "{'flags': [], 'risk_score': 1, 'confidence': 'Low', 'risk_band': 'Low'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869642.3046682,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "reasoning",
+        "timestamp": 1777869642.3066635,
+        "input": "{'txn_id': 'TXN003', 'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}",
+        "output": "{'reasoning': {'txn_id': 'TXN003', 'decision_basis': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'risk_factors': ['High Value Transaction'], 'policy_references': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'summary': 'Transaction exceeds AML threshold'}}"
+      },
+      {
+        "stage": "validation",
+        "timestamp": 1777869642.30861,
+        "input": "{'txn': {'txn_id': 'TXN003', 'customer_id': '****', 'amount': 25000, 'country': 'Nigeria', 'risk_score': 6, 'risk_category': 'High'}}",
+        "output": "{'flags': ['High Value', 'Sanctioned'], 'confidence': 'High', 'rule_hits': {'high_value': True, 'sanctioned_country': True, 'policy_triggered': False}}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869642.3108864,
+        "input": "{'txn': {'txn_id': 'TXN003', 'customer_id': '****', 'amount': 25000, 'country': 'Nigeria', 'risk_score': 6, 'risk_category': 'High'}, 'route': ['retriever', 'reasoner', 'validator']}",
+        "output": "{'flags': ['High Value', 'Sanctioned'], 'risk_score': 6, 'confidence': 'High', 'risk_band': 'High'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869642.3461823,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869642.3497806,
+        "input": "{'txn': {'txn_id': 'TXN004', 'customer_id': '****', 'amount': 8000, 'country': 'India', 'risk_score': 1, 'risk_category': 'Low'}, 'route': ['retriever']}",
+        "output": "{'flags': [], 'risk_score': 1, 'confidence': 'Low', 'risk_band': 'Low'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869642.3742654,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "reasoning",
+        "timestamp": 1777869642.3757834,
+        "input": "{'txn_id': 'TXN005', 'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}",
+        "output": "{'reasoning': {'txn_id': 'TXN005', 'decision_basis': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'risk_factors': ['High Value Transaction'], 'policy_references': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'summary': 'Transaction exceeds AML threshold'}}"
+      },
+      {
+        "stage": "validation",
+        "timestamp": 1777869642.3762925,
+        "input": "{'txn': {'txn_id': 'TXN005', 'customer_id': '****', 'amount': 12000, 'country': 'North Korea', 'risk_score': 5, 'risk_category': 'High'}}",
+        "output": "{'flags': ['High Value', 'Sanctioned'], 'confidence': 'High', 'rule_hits': {'high_value': True, 'sanctioned_country': True, 'policy_triggered': False}}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869642.3777847,
+        "input": "{'txn': {'txn_id': 'TXN005', 'customer_id': '****', 'amount': 12000, 'country': 'North Korea', 'risk_score': 5, 'risk_category': 'High'}, 'route': ['retriever', 'reasoner', 'validator']}",
+        "output": "{'flags': ['High Value', 'Sanctioned'], 'risk_score': 5, 'confidence': 'High', 'risk_band': 'High'}"
+      }
+    ]
+  },
+  {
+    "status": "SUCCESS",
+    "txn": {
+      "txn_id": "TXN003",
+      "customer_id": "****",
+      "amount": 25000,
+      "country": "Nigeria",
+      "risk_score": 6,
+      "risk_category": "High"
+    },
+    "route": [
+      "retriever",
+      "reasoner",
+      "validator"
+    ],
+    "docs": [
+      "Frequent transfers indicate structuring risk",
+      "Transactions above 10000 must be flagged"
+    ],
+    "reasoning": {
+      "txn_id": "TXN003",
+      "decision_basis": [
+        "Frequent transfers indicate structuring risk",
+        "Transactions above 10000 must be flagged"
+      ],
+      "risk_factors": [
+        "High Value Transaction"
+      ],
+      "policy_references": [
+        "Frequent transfers indicate structuring risk",
+        "Transactions above 10000 must be flagged"
+      ],
+      "summary": "Transaction exceeds AML threshold"
+    },
+    "validation": {
+      "flags": [
+        "High Value",
+        "Sanctioned"
+      ],
+      "confidence": "High",
+      "rule_hits": {
+        "high_value": true,
+        "sanctioned_country": true,
+        "policy_triggered": false
+      }
+    },
+    "flags": [
+      "High Value",
+      "Sanctioned"
+    ],
+    "confidence": "High",
+    "risk_score": 6,
+    "risk_band": "High",
+    "metrics": {
+      "txn_id": "TXN003",
+      "retrieval_time": 0.028622865676879883,
+      "reasoning_time": 0.0019359588623046875,
+      "validation_time": 0.0006663799285888672,
+      "total_flags": 2,
+      "timestamp": 1777869642.3092728
+    },
+    "ai_lineage": [
+      {
+        "stage": "retrieval",
+        "timestamp": 1777867226.9418483,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "reasoning",
+        "timestamp": 1777867226.9425304,
+        "input": "{'txn_id': 'TXN001', 'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}",
+        "output": "{'reasoning': {'txn_id': 'TXN001', 'decision_basis': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'risk_factors': ['High Value Transaction'], 'policy_references': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'summary': 'Transaction exceeds AML threshold'}}"
+      },
+      {
+        "stage": "validation",
+        "timestamp": 1777867226.9430907,
+        "input": "{'txn': {'txn_id': 'TXN001', 'customer_id': '****', 'amount': 15000, 'country': 'Singapore', 'risk_score': 2, 'risk_category': 'High'}}",
+        "output": "{'flags': ['High Value'], 'confidence': 'Medium', 'rule_hits': {'high_value': True, 'sanctioned_country': False, 'policy_triggered': False}}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777867226.9447088,
+        "input": "{'txn': {'txn_id': 'TXN001', 'customer_id': '****', 'amount': 15000, 'country': 'Singapore', 'risk_score': 2, 'risk_category': 'High'}, 'route': ['retriever', 'reasoner', 'validator']}",
+        "output": "{'flags': ['High Value'], 'risk_score': 2, 'confidence': 'Medium', 'risk_band': 'High'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869484.9557924,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "reasoning",
+        "timestamp": 1777869484.956717,
+        "input": "{'txn_id': 'TXN001', 'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}",
+        "output": "{'reasoning': {'txn_id': 'TXN001', 'decision_basis': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'risk_factors': ['High Value Transaction'], 'policy_references': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'summary': 'Transaction exceeds AML threshold'}}"
+      },
+      {
+        "stage": "validation",
+        "timestamp": 1777869484.9575603,
+        "input": "{'txn': {'txn_id': 'TXN001', 'customer_id': '****', 'amount': 15000, 'country': 'Singapore', 'risk_score': 2, 'risk_category': 'High'}}",
+        "output": "{'flags': ['High Value'], 'confidence': 'Medium', 'rule_hits': {'high_value': True, 'sanctioned_country': False, 'policy_triggered': False}}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869484.959774,
+        "input": "{'txn': {'txn_id': 'TXN001', 'customer_id': '****', 'amount': 15000, 'country': 'Singapore', 'risk_score': 2, 'risk_category': 'High'}, 'route': ['retriever', 'reasoner', 'validator']}",
+        "output": "{'flags': ['High Value'], 'risk_score': 2, 'confidence': 'Medium', 'risk_band': 'High'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869484.9938505,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869484.9984076,
+        "input": "{'txn': {'txn_id': 'TXN002', 'customer_id': '****', 'amount': 500, 'country': 'Singapore', 'risk_score': 1, 'risk_category': 'Low'}, 'route': ['retriever']}",
+        "output": "{'flags': [], 'risk_score': 1, 'confidence': 'Low', 'risk_band': 'Low'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869485.054833,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "reasoning",
+        "timestamp": 1777869485.056155,
+        "input": "{'txn_id': 'TXN003', 'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}",
+        "output": "{'reasoning': {'txn_id': 'TXN003', 'decision_basis': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'risk_factors': ['High Value Transaction'], 'policy_references': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'summary': 'Transaction exceeds AML threshold'}}"
+      },
+      {
+        "stage": "validation",
+        "timestamp": 1777869485.0573423,
+        "input": "{'txn': {'txn_id': 'TXN003', 'customer_id': '****', 'amount': 25000, 'country': 'Nigeria', 'risk_score': 6, 'risk_category': 'High'}}",
+        "output": "{'flags': ['High Value', 'Sanctioned'], 'confidence': 'High', 'rule_hits': {'high_value': True, 'sanctioned_country': True, 'policy_triggered': False}}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869485.0602155,
+        "input": "{'txn': {'txn_id': 'TXN003', 'customer_id': '****', 'amount': 25000, 'country': 'Nigeria', 'risk_score': 6, 'risk_category': 'High'}, 'route': ['retriever', 'reasoner', 'validator']}",
+        "output": "{'flags': ['High Value', 'Sanctioned'], 'risk_score': 6, 'confidence': 'High', 'risk_band': 'High'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869485.100147,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869485.1021025,
+        "input": "{'txn': {'txn_id': 'TXN004', 'customer_id': '****', 'amount': 8000, 'country': 'India', 'risk_score': 1, 'risk_category': 'Low'}, 'route': ['retriever']}",
+        "output": "{'flags': [], 'risk_score': 1, 'confidence': 'Low', 'risk_band': 'Low'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869485.1425347,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "reasoning",
+        "timestamp": 1777869485.143526,
+        "input": "{'txn_id': 'TXN005', 'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}",
+        "output": "{'reasoning': {'txn_id': 'TXN005', 'decision_basis': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'risk_factors': ['High Value Transaction'], 'policy_references': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'summary': 'Transaction exceeds AML threshold'}}"
+      },
+      {
+        "stage": "validation",
+        "timestamp": 1777869485.144229,
+        "input": "{'txn': {'txn_id': 'TXN005', 'customer_id': '****', 'amount': 12000, 'country': 'North Korea', 'risk_score': 5, 'risk_category': 'High'}}",
+        "output": "{'flags': ['High Value', 'Sanctioned'], 'confidence': 'High', 'rule_hits': {'high_value': True, 'sanctioned_country': True, 'policy_triggered': False}}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869485.1461425,
+        "input": "{'txn': {'txn_id': 'TXN005', 'customer_id': '****', 'amount': 12000, 'country': 'North Korea', 'risk_score': 5, 'risk_category': 'High'}, 'route': ['retriever', 'reasoner', 'validator']}",
+        "output": "{'flags': ['High Value', 'Sanctioned'], 'risk_score': 5, 'confidence': 'High', 'risk_band': 'High'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869508.6780698,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "reasoning",
+        "timestamp": 1777869508.6789167,
+        "input": "{'txn_id': 'TXN001', 'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}",
+        "output": "{'reasoning': {'txn_id': 'TXN001', 'decision_basis': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'risk_factors': ['High Value Transaction'], 'policy_references': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'summary': 'Transaction exceeds AML threshold'}}"
+      },
+      {
+        "stage": "validation",
+        "timestamp": 1777869508.6798978,
+        "input": "{'txn': {'txn_id': 'TXN001', 'customer_id': '****', 'amount': 15000, 'country': 'Singapore', 'risk_score': 2, 'risk_category': 'High'}}",
+        "output": "{'flags': ['High Value'], 'confidence': 'Medium', 'rule_hits': {'high_value': True, 'sanctioned_country': False, 'policy_triggered': False}}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869508.6815515,
+        "input": "{'txn': {'txn_id': 'TXN001', 'customer_id': '****', 'amount': 15000, 'country': 'Singapore', 'risk_score': 2, 'risk_category': 'High'}, 'route': ['retriever', 'reasoner', 'validator']}",
+        "output": "{'flags': ['High Value'], 'risk_score': 2, 'confidence': 'Medium', 'risk_band': 'High'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869508.7053714,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869508.7078936,
+        "input": "{'txn': {'txn_id': 'TXN002', 'customer_id': '****', 'amount': 500, 'country': 'Singapore', 'risk_score': 1, 'risk_category': 'Low'}, 'route': ['retriever']}",
+        "output": "{'flags': [], 'risk_score': 1, 'confidence': 'Low', 'risk_band': 'Low'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869508.733988,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "reasoning",
+        "timestamp": 1777869508.7358162,
+        "input": "{'txn_id': 'TXN003', 'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}",
+        "output": "{'reasoning': {'txn_id': 'TXN003', 'decision_basis': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'risk_factors': ['High Value Transaction'], 'policy_references': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'summary': 'Transaction exceeds AML threshold'}}"
+      },
+      {
+        "stage": "validation",
+        "timestamp": 1777869508.7364495,
+        "input": "{'txn': {'txn_id': 'TXN003', 'customer_id': '****', 'amount': 25000, 'country': 'Nigeria', 'risk_score': 6, 'risk_category': 'High'}}",
+        "output": "{'flags': ['High Value', 'Sanctioned'], 'confidence': 'High', 'rule_hits': {'high_value': True, 'sanctioned_country': True, 'policy_triggered': False}}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869508.7377884,
+        "input": "{'txn': {'txn_id': 'TXN003', 'customer_id': '****', 'amount': 25000, 'country': 'Nigeria', 'risk_score': 6, 'risk_category': 'High'}, 'route': ['retriever', 'reasoner', 'validator']}",
+        "output": "{'flags': ['High Value', 'Sanctioned'], 'risk_score': 6, 'confidence': 'High', 'risk_band': 'High'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869508.7696998,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869508.7717745,
+        "input": "{'txn': {'txn_id': 'TXN004', 'customer_id': '****', 'amount': 8000, 'country': 'India', 'risk_score': 1, 'risk_category': 'Low'}, 'route': ['retriever']}",
+        "output": "{'flags': [], 'risk_score': 1, 'confidence': 'Low', 'risk_band': 'Low'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869508.8006594,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "reasoning",
+        "timestamp": 1777869508.8017592,
+        "input": "{'txn_id': 'TXN005', 'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}",
+        "output": "{'reasoning': {'txn_id': 'TXN005', 'decision_basis': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'risk_factors': ['High Value Transaction'], 'policy_references': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'summary': 'Transaction exceeds AML threshold'}}"
+      },
+      {
+        "stage": "validation",
+        "timestamp": 1777869508.8024678,
+        "input": "{'txn': {'txn_id': 'TXN005', 'customer_id': '****', 'amount': 12000, 'country': 'North Korea', 'risk_score': 5, 'risk_category': 'High'}}",
+        "output": "{'flags': ['High Value', 'Sanctioned'], 'confidence': 'High', 'rule_hits': {'high_value': True, 'sanctioned_country': True, 'policy_triggered': False}}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869508.8041584,
+        "input": "{'txn': {'txn_id': 'TXN005', 'customer_id': '****', 'amount': 12000, 'country': 'North Korea', 'risk_score': 5, 'risk_category': 'High'}, 'route': ['retriever', 'reasoner', 'validator']}",
+        "output": "{'flags': ['High Value', 'Sanctioned'], 'risk_score': 5, 'confidence': 'High', 'risk_band': 'High'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869642.2408326,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "reasoning",
+        "timestamp": 1777869642.2421386,
+        "input": "{'txn_id': 'TXN001', 'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}",
+        "output": "{'reasoning': {'txn_id': 'TXN001', 'decision_basis': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'risk_factors': ['High Value Transaction'], 'policy_references': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'summary': 'Transaction exceeds AML threshold'}}"
+      },
+      {
+        "stage": "validation",
+        "timestamp": 1777869642.2429557,
+        "input": "{'txn': {'txn_id': 'TXN001', 'customer_id': '****', 'amount': 15000, 'country': 'Singapore', 'risk_score': 2, 'risk_category': 'High'}}",
+        "output": "{'flags': ['High Value'], 'confidence': 'Medium', 'rule_hits': {'high_value': True, 'sanctioned_country': False, 'policy_triggered': False}}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869642.2453718,
+        "input": "{'txn': {'txn_id': 'TXN001', 'customer_id': '****', 'amount': 15000, 'country': 'Singapore', 'risk_score': 2, 'risk_category': 'High'}, 'route': ['retriever', 'reasoner', 'validator']}",
+        "output": "{'flags': ['High Value'], 'risk_score': 2, 'confidence': 'Medium', 'risk_band': 'High'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869642.27464,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869642.2772694,
+        "input": "{'txn': {'txn_id': 'TXN002', 'customer_id': '****', 'amount': 500, 'country': 'Singapore', 'risk_score': 1, 'risk_category': 'Low'}, 'route': ['retriever']}",
+        "output": "{'flags': [], 'risk_score': 1, 'confidence': 'Low', 'risk_band': 'Low'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869642.3046682,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "reasoning",
+        "timestamp": 1777869642.3066635,
+        "input": "{'txn_id': 'TXN003', 'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}",
+        "output": "{'reasoning': {'txn_id': 'TXN003', 'decision_basis': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'risk_factors': ['High Value Transaction'], 'policy_references': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'summary': 'Transaction exceeds AML threshold'}}"
+      },
+      {
+        "stage": "validation",
+        "timestamp": 1777869642.30861,
+        "input": "{'txn': {'txn_id': 'TXN003', 'customer_id': '****', 'amount': 25000, 'country': 'Nigeria', 'risk_score': 6, 'risk_category': 'High'}}",
+        "output": "{'flags': ['High Value', 'Sanctioned'], 'confidence': 'High', 'rule_hits': {'high_value': True, 'sanctioned_country': True, 'policy_triggered': False}}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869642.3108864,
+        "input": "{'txn': {'txn_id': 'TXN003', 'customer_id': '****', 'amount': 25000, 'country': 'Nigeria', 'risk_score': 6, 'risk_category': 'High'}, 'route': ['retriever', 'reasoner', 'validator']}",
+        "output": "{'flags': ['High Value', 'Sanctioned'], 'risk_score': 6, 'confidence': 'High', 'risk_band': 'High'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869642.3461823,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869642.3497806,
+        "input": "{'txn': {'txn_id': 'TXN004', 'customer_id': '****', 'amount': 8000, 'country': 'India', 'risk_score': 1, 'risk_category': 'Low'}, 'route': ['retriever']}",
+        "output": "{'flags': [], 'risk_score': 1, 'confidence': 'Low', 'risk_band': 'Low'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869642.3742654,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "reasoning",
+        "timestamp": 1777869642.3757834,
+        "input": "{'txn_id': 'TXN005', 'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}",
+        "output": "{'reasoning': {'txn_id': 'TXN005', 'decision_basis': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'risk_factors': ['High Value Transaction'], 'policy_references': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'summary': 'Transaction exceeds AML threshold'}}"
+      },
+      {
+        "stage": "validation",
+        "timestamp": 1777869642.3762925,
+        "input": "{'txn': {'txn_id': 'TXN005', 'customer_id': '****', 'amount': 12000, 'country': 'North Korea', 'risk_score': 5, 'risk_category': 'High'}}",
+        "output": "{'flags': ['High Value', 'Sanctioned'], 'confidence': 'High', 'rule_hits': {'high_value': True, 'sanctioned_country': True, 'policy_triggered': False}}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869642.3777847,
+        "input": "{'txn': {'txn_id': 'TXN005', 'customer_id': '****', 'amount': 12000, 'country': 'North Korea', 'risk_score': 5, 'risk_category': 'High'}, 'route': ['retriever', 'reasoner', 'validator']}",
+        "output": "{'flags': ['High Value', 'Sanctioned'], 'risk_score': 5, 'confidence': 'High', 'risk_band': 'High'}"
+      }
+    ]
+  },
+  {
+    "status": "SUCCESS",
+    "txn": {
+      "txn_id": "TXN004",
+      "customer_id": "****",
+      "amount": 8000,
+      "country": "India",
+      "risk_score": 1,
+      "risk_category": "Low"
+    },
+    "route": [
+      "retriever"
+    ],
+    "docs": [
+      "Frequent transfers indicate structuring risk",
+      "Transactions above 10000 must be flagged"
+    ],
+    "reasoning": null,
+    "validation": null,
+    "flags": [],
+    "confidence": "Low",
+    "risk_score": 1,
+    "risk_band": "Low",
+    "metrics": {
+      "txn_id": "TXN004",
+      "retrieval_time": 0.03567671775817871,
+      "reasoning_time": 0,
+      "validation_time": 0,
+      "total_flags": 0,
+      "timestamp": 1777869642.347686
+    },
+    "ai_lineage": [
+      {
+        "stage": "retrieval",
+        "timestamp": 1777867226.9418483,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "reasoning",
+        "timestamp": 1777867226.9425304,
+        "input": "{'txn_id': 'TXN001', 'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}",
+        "output": "{'reasoning': {'txn_id': 'TXN001', 'decision_basis': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'risk_factors': ['High Value Transaction'], 'policy_references': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'summary': 'Transaction exceeds AML threshold'}}"
+      },
+      {
+        "stage": "validation",
+        "timestamp": 1777867226.9430907,
+        "input": "{'txn': {'txn_id': 'TXN001', 'customer_id': '****', 'amount': 15000, 'country': 'Singapore', 'risk_score': 2, 'risk_category': 'High'}}",
+        "output": "{'flags': ['High Value'], 'confidence': 'Medium', 'rule_hits': {'high_value': True, 'sanctioned_country': False, 'policy_triggered': False}}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777867226.9447088,
+        "input": "{'txn': {'txn_id': 'TXN001', 'customer_id': '****', 'amount': 15000, 'country': 'Singapore', 'risk_score': 2, 'risk_category': 'High'}, 'route': ['retriever', 'reasoner', 'validator']}",
+        "output": "{'flags': ['High Value'], 'risk_score': 2, 'confidence': 'Medium', 'risk_band': 'High'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869484.9557924,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "reasoning",
+        "timestamp": 1777869484.956717,
+        "input": "{'txn_id': 'TXN001', 'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}",
+        "output": "{'reasoning': {'txn_id': 'TXN001', 'decision_basis': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'risk_factors': ['High Value Transaction'], 'policy_references': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'summary': 'Transaction exceeds AML threshold'}}"
+      },
+      {
+        "stage": "validation",
+        "timestamp": 1777869484.9575603,
+        "input": "{'txn': {'txn_id': 'TXN001', 'customer_id': '****', 'amount': 15000, 'country': 'Singapore', 'risk_score': 2, 'risk_category': 'High'}}",
+        "output": "{'flags': ['High Value'], 'confidence': 'Medium', 'rule_hits': {'high_value': True, 'sanctioned_country': False, 'policy_triggered': False}}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869484.959774,
+        "input": "{'txn': {'txn_id': 'TXN001', 'customer_id': '****', 'amount': 15000, 'country': 'Singapore', 'risk_score': 2, 'risk_category': 'High'}, 'route': ['retriever', 'reasoner', 'validator']}",
+        "output": "{'flags': ['High Value'], 'risk_score': 2, 'confidence': 'Medium', 'risk_band': 'High'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869484.9938505,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869484.9984076,
+        "input": "{'txn': {'txn_id': 'TXN002', 'customer_id': '****', 'amount': 500, 'country': 'Singapore', 'risk_score': 1, 'risk_category': 'Low'}, 'route': ['retriever']}",
+        "output": "{'flags': [], 'risk_score': 1, 'confidence': 'Low', 'risk_band': 'Low'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869485.054833,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "reasoning",
+        "timestamp": 1777869485.056155,
+        "input": "{'txn_id': 'TXN003', 'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}",
+        "output": "{'reasoning': {'txn_id': 'TXN003', 'decision_basis': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'risk_factors': ['High Value Transaction'], 'policy_references': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'summary': 'Transaction exceeds AML threshold'}}"
+      },
+      {
+        "stage": "validation",
+        "timestamp": 1777869485.0573423,
+        "input": "{'txn': {'txn_id': 'TXN003', 'customer_id': '****', 'amount': 25000, 'country': 'Nigeria', 'risk_score': 6, 'risk_category': 'High'}}",
+        "output": "{'flags': ['High Value', 'Sanctioned'], 'confidence': 'High', 'rule_hits': {'high_value': True, 'sanctioned_country': True, 'policy_triggered': False}}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869485.0602155,
+        "input": "{'txn': {'txn_id': 'TXN003', 'customer_id': '****', 'amount': 25000, 'country': 'Nigeria', 'risk_score': 6, 'risk_category': 'High'}, 'route': ['retriever', 'reasoner', 'validator']}",
+        "output": "{'flags': ['High Value', 'Sanctioned'], 'risk_score': 6, 'confidence': 'High', 'risk_band': 'High'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869485.100147,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869485.1021025,
+        "input": "{'txn': {'txn_id': 'TXN004', 'customer_id': '****', 'amount': 8000, 'country': 'India', 'risk_score': 1, 'risk_category': 'Low'}, 'route': ['retriever']}",
+        "output": "{'flags': [], 'risk_score': 1, 'confidence': 'Low', 'risk_band': 'Low'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869485.1425347,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "reasoning",
+        "timestamp": 1777869485.143526,
+        "input": "{'txn_id': 'TXN005', 'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}",
+        "output": "{'reasoning': {'txn_id': 'TXN005', 'decision_basis': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'risk_factors': ['High Value Transaction'], 'policy_references': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'summary': 'Transaction exceeds AML threshold'}}"
+      },
+      {
+        "stage": "validation",
+        "timestamp": 1777869485.144229,
+        "input": "{'txn': {'txn_id': 'TXN005', 'customer_id': '****', 'amount': 12000, 'country': 'North Korea', 'risk_score': 5, 'risk_category': 'High'}}",
+        "output": "{'flags': ['High Value', 'Sanctioned'], 'confidence': 'High', 'rule_hits': {'high_value': True, 'sanctioned_country': True, 'policy_triggered': False}}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869485.1461425,
+        "input": "{'txn': {'txn_id': 'TXN005', 'customer_id': '****', 'amount': 12000, 'country': 'North Korea', 'risk_score': 5, 'risk_category': 'High'}, 'route': ['retriever', 'reasoner', 'validator']}",
+        "output": "{'flags': ['High Value', 'Sanctioned'], 'risk_score': 5, 'confidence': 'High', 'risk_band': 'High'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869508.6780698,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "reasoning",
+        "timestamp": 1777869508.6789167,
+        "input": "{'txn_id': 'TXN001', 'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}",
+        "output": "{'reasoning': {'txn_id': 'TXN001', 'decision_basis': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'risk_factors': ['High Value Transaction'], 'policy_references': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'summary': 'Transaction exceeds AML threshold'}}"
+      },
+      {
+        "stage": "validation",
+        "timestamp": 1777869508.6798978,
+        "input": "{'txn': {'txn_id': 'TXN001', 'customer_id': '****', 'amount': 15000, 'country': 'Singapore', 'risk_score': 2, 'risk_category': 'High'}}",
+        "output": "{'flags': ['High Value'], 'confidence': 'Medium', 'rule_hits': {'high_value': True, 'sanctioned_country': False, 'policy_triggered': False}}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869508.6815515,
+        "input": "{'txn': {'txn_id': 'TXN001', 'customer_id': '****', 'amount': 15000, 'country': 'Singapore', 'risk_score': 2, 'risk_category': 'High'}, 'route': ['retriever', 'reasoner', 'validator']}",
+        "output": "{'flags': ['High Value'], 'risk_score': 2, 'confidence': 'Medium', 'risk_band': 'High'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869508.7053714,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869508.7078936,
+        "input": "{'txn': {'txn_id': 'TXN002', 'customer_id': '****', 'amount': 500, 'country': 'Singapore', 'risk_score': 1, 'risk_category': 'Low'}, 'route': ['retriever']}",
+        "output": "{'flags': [], 'risk_score': 1, 'confidence': 'Low', 'risk_band': 'Low'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869508.733988,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "reasoning",
+        "timestamp": 1777869508.7358162,
+        "input": "{'txn_id': 'TXN003', 'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}",
+        "output": "{'reasoning': {'txn_id': 'TXN003', 'decision_basis': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'risk_factors': ['High Value Transaction'], 'policy_references': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'summary': 'Transaction exceeds AML threshold'}}"
+      },
+      {
+        "stage": "validation",
+        "timestamp": 1777869508.7364495,
+        "input": "{'txn': {'txn_id': 'TXN003', 'customer_id': '****', 'amount': 25000, 'country': 'Nigeria', 'risk_score': 6, 'risk_category': 'High'}}",
+        "output": "{'flags': ['High Value', 'Sanctioned'], 'confidence': 'High', 'rule_hits': {'high_value': True, 'sanctioned_country': True, 'policy_triggered': False}}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869508.7377884,
+        "input": "{'txn': {'txn_id': 'TXN003', 'customer_id': '****', 'amount': 25000, 'country': 'Nigeria', 'risk_score': 6, 'risk_category': 'High'}, 'route': ['retriever', 'reasoner', 'validator']}",
+        "output": "{'flags': ['High Value', 'Sanctioned'], 'risk_score': 6, 'confidence': 'High', 'risk_band': 'High'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869508.7696998,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869508.7717745,
+        "input": "{'txn': {'txn_id': 'TXN004', 'customer_id': '****', 'amount': 8000, 'country': 'India', 'risk_score': 1, 'risk_category': 'Low'}, 'route': ['retriever']}",
+        "output": "{'flags': [], 'risk_score': 1, 'confidence': 'Low', 'risk_band': 'Low'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869508.8006594,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "reasoning",
+        "timestamp": 1777869508.8017592,
+        "input": "{'txn_id': 'TXN005', 'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}",
+        "output": "{'reasoning': {'txn_id': 'TXN005', 'decision_basis': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'risk_factors': ['High Value Transaction'], 'policy_references': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'summary': 'Transaction exceeds AML threshold'}}"
+      },
+      {
+        "stage": "validation",
+        "timestamp": 1777869508.8024678,
+        "input": "{'txn': {'txn_id': 'TXN005', 'customer_id': '****', 'amount': 12000, 'country': 'North Korea', 'risk_score': 5, 'risk_category': 'High'}}",
+        "output": "{'flags': ['High Value', 'Sanctioned'], 'confidence': 'High', 'rule_hits': {'high_value': True, 'sanctioned_country': True, 'policy_triggered': False}}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869508.8041584,
+        "input": "{'txn': {'txn_id': 'TXN005', 'customer_id': '****', 'amount': 12000, 'country': 'North Korea', 'risk_score': 5, 'risk_category': 'High'}, 'route': ['retriever', 'reasoner', 'validator']}",
+        "output": "{'flags': ['High Value', 'Sanctioned'], 'risk_score': 5, 'confidence': 'High', 'risk_band': 'High'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869642.2408326,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "reasoning",
+        "timestamp": 1777869642.2421386,
+        "input": "{'txn_id': 'TXN001', 'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}",
+        "output": "{'reasoning': {'txn_id': 'TXN001', 'decision_basis': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'risk_factors': ['High Value Transaction'], 'policy_references': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'summary': 'Transaction exceeds AML threshold'}}"
+      },
+      {
+        "stage": "validation",
+        "timestamp": 1777869642.2429557,
+        "input": "{'txn': {'txn_id': 'TXN001', 'customer_id': '****', 'amount': 15000, 'country': 'Singapore', 'risk_score': 2, 'risk_category': 'High'}}",
+        "output": "{'flags': ['High Value'], 'confidence': 'Medium', 'rule_hits': {'high_value': True, 'sanctioned_country': False, 'policy_triggered': False}}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869642.2453718,
+        "input": "{'txn': {'txn_id': 'TXN001', 'customer_id': '****', 'amount': 15000, 'country': 'Singapore', 'risk_score': 2, 'risk_category': 'High'}, 'route': ['retriever', 'reasoner', 'validator']}",
+        "output": "{'flags': ['High Value'], 'risk_score': 2, 'confidence': 'Medium', 'risk_band': 'High'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869642.27464,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869642.2772694,
+        "input": "{'txn': {'txn_id': 'TXN002', 'customer_id': '****', 'amount': 500, 'country': 'Singapore', 'risk_score': 1, 'risk_category': 'Low'}, 'route': ['retriever']}",
+        "output": "{'flags': [], 'risk_score': 1, 'confidence': 'Low', 'risk_band': 'Low'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869642.3046682,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "reasoning",
+        "timestamp": 1777869642.3066635,
+        "input": "{'txn_id': 'TXN003', 'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}",
+        "output": "{'reasoning': {'txn_id': 'TXN003', 'decision_basis': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'risk_factors': ['High Value Transaction'], 'policy_references': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'summary': 'Transaction exceeds AML threshold'}}"
+      },
+      {
+        "stage": "validation",
+        "timestamp": 1777869642.30861,
+        "input": "{'txn': {'txn_id': 'TXN003', 'customer_id': '****', 'amount': 25000, 'country': 'Nigeria', 'risk_score': 6, 'risk_category': 'High'}}",
+        "output": "{'flags': ['High Value', 'Sanctioned'], 'confidence': 'High', 'rule_hits': {'high_value': True, 'sanctioned_country': True, 'policy_triggered': False}}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869642.3108864,
+        "input": "{'txn': {'txn_id': 'TXN003', 'customer_id': '****', 'amount': 25000, 'country': 'Nigeria', 'risk_score': 6, 'risk_category': 'High'}, 'route': ['retriever', 'reasoner', 'validator']}",
+        "output": "{'flags': ['High Value', 'Sanctioned'], 'risk_score': 6, 'confidence': 'High', 'risk_band': 'High'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869642.3461823,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869642.3497806,
+        "input": "{'txn': {'txn_id': 'TXN004', 'customer_id': '****', 'amount': 8000, 'country': 'India', 'risk_score': 1, 'risk_category': 'Low'}, 'route': ['retriever']}",
+        "output": "{'flags': [], 'risk_score': 1, 'confidence': 'Low', 'risk_band': 'Low'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869642.3742654,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "reasoning",
+        "timestamp": 1777869642.3757834,
+        "input": "{'txn_id': 'TXN005', 'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}",
+        "output": "{'reasoning': {'txn_id': 'TXN005', 'decision_basis': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'risk_factors': ['High Value Transaction'], 'policy_references': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'summary': 'Transaction exceeds AML threshold'}}"
+      },
+      {
+        "stage": "validation",
+        "timestamp": 1777869642.3762925,
+        "input": "{'txn': {'txn_id': 'TXN005', 'customer_id': '****', 'amount': 12000, 'country': 'North Korea', 'risk_score': 5, 'risk_category': 'High'}}",
+        "output": "{'flags': ['High Value', 'Sanctioned'], 'confidence': 'High', 'rule_hits': {'high_value': True, 'sanctioned_country': True, 'policy_triggered': False}}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869642.3777847,
+        "input": "{'txn': {'txn_id': 'TXN005', 'customer_id': '****', 'amount': 12000, 'country': 'North Korea', 'risk_score': 5, 'risk_category': 'High'}, 'route': ['retriever', 'reasoner', 'validator']}",
+        "output": "{'flags': ['High Value', 'Sanctioned'], 'risk_score': 5, 'confidence': 'High', 'risk_band': 'High'}"
+      }
+    ]
+  },
+  {
+    "status": "SUCCESS",
+    "txn": {
+      "txn_id": "TXN005",
+      "customer_id": "****",
+      "amount": 12000,
+      "country": "North Korea",
+      "risk_score": 5,
+      "risk_category": "High"
+    },
+    "route": [
+      "retriever",
+      "reasoner",
+      "validator"
+    ],
+    "docs": [
+      "Frequent transfers indicate structuring risk",
+      "Transactions above 10000 must be flagged"
+    ],
+    "reasoning": {
+      "txn_id": "TXN005",
+      "decision_basis": [
+        "Frequent transfers indicate structuring risk",
+        "Transactions above 10000 must be flagged"
+      ],
+      "risk_factors": [
+        "High Value Transaction"
+      ],
+      "policy_references": [
+        "Frequent transfers indicate structuring risk",
+        "Transactions above 10000 must be flagged"
+      ],
+      "summary": "Transaction exceeds AML threshold"
+    },
+    "validation": {
+      "flags": [
+        "High Value",
+        "Sanctioned"
+      ],
+      "confidence": "High",
+      "rule_hits": {
+        "high_value": true,
+        "sanctioned_country": true,
+        "policy_triggered": false
+      }
+    },
+    "flags": [
+      "High Value",
+      "Sanctioned"
+    ],
+    "confidence": "High",
+    "risk_score": 5,
+    "risk_band": "High",
+    "metrics": {
+      "txn_id": "TXN005",
+      "retrieval_time": 0.024973392486572266,
+      "reasoning_time": 0.0005049705505371094,
+      "validation_time": 0.00044226646423339844,
+      "total_flags": 2,
+      "timestamp": 1777869642.3767354
+    },
+    "ai_lineage": [
+      {
+        "stage": "retrieval",
+        "timestamp": 1777867226.9418483,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "reasoning",
+        "timestamp": 1777867226.9425304,
+        "input": "{'txn_id': 'TXN001', 'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}",
+        "output": "{'reasoning': {'txn_id': 'TXN001', 'decision_basis': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'risk_factors': ['High Value Transaction'], 'policy_references': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'summary': 'Transaction exceeds AML threshold'}}"
+      },
+      {
+        "stage": "validation",
+        "timestamp": 1777867226.9430907,
+        "input": "{'txn': {'txn_id': 'TXN001', 'customer_id': '****', 'amount': 15000, 'country': 'Singapore', 'risk_score': 2, 'risk_category': 'High'}}",
+        "output": "{'flags': ['High Value'], 'confidence': 'Medium', 'rule_hits': {'high_value': True, 'sanctioned_country': False, 'policy_triggered': False}}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777867226.9447088,
+        "input": "{'txn': {'txn_id': 'TXN001', 'customer_id': '****', 'amount': 15000, 'country': 'Singapore', 'risk_score': 2, 'risk_category': 'High'}, 'route': ['retriever', 'reasoner', 'validator']}",
+        "output": "{'flags': ['High Value'], 'risk_score': 2, 'confidence': 'Medium', 'risk_band': 'High'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869484.9557924,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "reasoning",
+        "timestamp": 1777869484.956717,
+        "input": "{'txn_id': 'TXN001', 'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}",
+        "output": "{'reasoning': {'txn_id': 'TXN001', 'decision_basis': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'risk_factors': ['High Value Transaction'], 'policy_references': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'summary': 'Transaction exceeds AML threshold'}}"
+      },
+      {
+        "stage": "validation",
+        "timestamp": 1777869484.9575603,
+        "input": "{'txn': {'txn_id': 'TXN001', 'customer_id': '****', 'amount': 15000, 'country': 'Singapore', 'risk_score': 2, 'risk_category': 'High'}}",
+        "output": "{'flags': ['High Value'], 'confidence': 'Medium', 'rule_hits': {'high_value': True, 'sanctioned_country': False, 'policy_triggered': False}}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869484.959774,
+        "input": "{'txn': {'txn_id': 'TXN001', 'customer_id': '****', 'amount': 15000, 'country': 'Singapore', 'risk_score': 2, 'risk_category': 'High'}, 'route': ['retriever', 'reasoner', 'validator']}",
+        "output": "{'flags': ['High Value'], 'risk_score': 2, 'confidence': 'Medium', 'risk_band': 'High'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869484.9938505,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869484.9984076,
+        "input": "{'txn': {'txn_id': 'TXN002', 'customer_id': '****', 'amount': 500, 'country': 'Singapore', 'risk_score': 1, 'risk_category': 'Low'}, 'route': ['retriever']}",
+        "output": "{'flags': [], 'risk_score': 1, 'confidence': 'Low', 'risk_band': 'Low'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869485.054833,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "reasoning",
+        "timestamp": 1777869485.056155,
+        "input": "{'txn_id': 'TXN003', 'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}",
+        "output": "{'reasoning': {'txn_id': 'TXN003', 'decision_basis': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'risk_factors': ['High Value Transaction'], 'policy_references': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'summary': 'Transaction exceeds AML threshold'}}"
+      },
+      {
+        "stage": "validation",
+        "timestamp": 1777869485.0573423,
+        "input": "{'txn': {'txn_id': 'TXN003', 'customer_id': '****', 'amount': 25000, 'country': 'Nigeria', 'risk_score': 6, 'risk_category': 'High'}}",
+        "output": "{'flags': ['High Value', 'Sanctioned'], 'confidence': 'High', 'rule_hits': {'high_value': True, 'sanctioned_country': True, 'policy_triggered': False}}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869485.0602155,
+        "input": "{'txn': {'txn_id': 'TXN003', 'customer_id': '****', 'amount': 25000, 'country': 'Nigeria', 'risk_score': 6, 'risk_category': 'High'}, 'route': ['retriever', 'reasoner', 'validator']}",
+        "output": "{'flags': ['High Value', 'Sanctioned'], 'risk_score': 6, 'confidence': 'High', 'risk_band': 'High'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869485.100147,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869485.1021025,
+        "input": "{'txn': {'txn_id': 'TXN004', 'customer_id': '****', 'amount': 8000, 'country': 'India', 'risk_score': 1, 'risk_category': 'Low'}, 'route': ['retriever']}",
+        "output": "{'flags': [], 'risk_score': 1, 'confidence': 'Low', 'risk_band': 'Low'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869485.1425347,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "reasoning",
+        "timestamp": 1777869485.143526,
+        "input": "{'txn_id': 'TXN005', 'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}",
+        "output": "{'reasoning': {'txn_id': 'TXN005', 'decision_basis': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'risk_factors': ['High Value Transaction'], 'policy_references': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'summary': 'Transaction exceeds AML threshold'}}"
+      },
+      {
+        "stage": "validation",
+        "timestamp": 1777869485.144229,
+        "input": "{'txn': {'txn_id': 'TXN005', 'customer_id': '****', 'amount': 12000, 'country': 'North Korea', 'risk_score': 5, 'risk_category': 'High'}}",
+        "output": "{'flags': ['High Value', 'Sanctioned'], 'confidence': 'High', 'rule_hits': {'high_value': True, 'sanctioned_country': True, 'policy_triggered': False}}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869485.1461425,
+        "input": "{'txn': {'txn_id': 'TXN005', 'customer_id': '****', 'amount': 12000, 'country': 'North Korea', 'risk_score': 5, 'risk_category': 'High'}, 'route': ['retriever', 'reasoner', 'validator']}",
+        "output": "{'flags': ['High Value', 'Sanctioned'], 'risk_score': 5, 'confidence': 'High', 'risk_band': 'High'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869508.6780698,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "reasoning",
+        "timestamp": 1777869508.6789167,
+        "input": "{'txn_id': 'TXN001', 'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}",
+        "output": "{'reasoning': {'txn_id': 'TXN001', 'decision_basis': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'risk_factors': ['High Value Transaction'], 'policy_references': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'summary': 'Transaction exceeds AML threshold'}}"
+      },
+      {
+        "stage": "validation",
+        "timestamp": 1777869508.6798978,
+        "input": "{'txn': {'txn_id': 'TXN001', 'customer_id': '****', 'amount': 15000, 'country': 'Singapore', 'risk_score': 2, 'risk_category': 'High'}}",
+        "output": "{'flags': ['High Value'], 'confidence': 'Medium', 'rule_hits': {'high_value': True, 'sanctioned_country': False, 'policy_triggered': False}}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869508.6815515,
+        "input": "{'txn': {'txn_id': 'TXN001', 'customer_id': '****', 'amount': 15000, 'country': 'Singapore', 'risk_score': 2, 'risk_category': 'High'}, 'route': ['retriever', 'reasoner', 'validator']}",
+        "output": "{'flags': ['High Value'], 'risk_score': 2, 'confidence': 'Medium', 'risk_band': 'High'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869508.7053714,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869508.7078936,
+        "input": "{'txn': {'txn_id': 'TXN002', 'customer_id': '****', 'amount': 500, 'country': 'Singapore', 'risk_score': 1, 'risk_category': 'Low'}, 'route': ['retriever']}",
+        "output": "{'flags': [], 'risk_score': 1, 'confidence': 'Low', 'risk_band': 'Low'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869508.733988,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "reasoning",
+        "timestamp": 1777869508.7358162,
+        "input": "{'txn_id': 'TXN003', 'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}",
+        "output": "{'reasoning': {'txn_id': 'TXN003', 'decision_basis': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'risk_factors': ['High Value Transaction'], 'policy_references': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'summary': 'Transaction exceeds AML threshold'}}"
+      },
+      {
+        "stage": "validation",
+        "timestamp": 1777869508.7364495,
+        "input": "{'txn': {'txn_id': 'TXN003', 'customer_id': '****', 'amount': 25000, 'country': 'Nigeria', 'risk_score': 6, 'risk_category': 'High'}}",
+        "output": "{'flags': ['High Value', 'Sanctioned'], 'confidence': 'High', 'rule_hits': {'high_value': True, 'sanctioned_country': True, 'policy_triggered': False}}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869508.7377884,
+        "input": "{'txn': {'txn_id': 'TXN003', 'customer_id': '****', 'amount': 25000, 'country': 'Nigeria', 'risk_score': 6, 'risk_category': 'High'}, 'route': ['retriever', 'reasoner', 'validator']}",
+        "output": "{'flags': ['High Value', 'Sanctioned'], 'risk_score': 6, 'confidence': 'High', 'risk_band': 'High'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869508.7696998,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869508.7717745,
+        "input": "{'txn': {'txn_id': 'TXN004', 'customer_id': '****', 'amount': 8000, 'country': 'India', 'risk_score': 1, 'risk_category': 'Low'}, 'route': ['retriever']}",
+        "output": "{'flags': [], 'risk_score': 1, 'confidence': 'Low', 'risk_band': 'Low'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869508.8006594,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "reasoning",
+        "timestamp": 1777869508.8017592,
+        "input": "{'txn_id': 'TXN005', 'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}",
+        "output": "{'reasoning': {'txn_id': 'TXN005', 'decision_basis': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'risk_factors': ['High Value Transaction'], 'policy_references': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'summary': 'Transaction exceeds AML threshold'}}"
+      },
+      {
+        "stage": "validation",
+        "timestamp": 1777869508.8024678,
+        "input": "{'txn': {'txn_id': 'TXN005', 'customer_id': '****', 'amount': 12000, 'country': 'North Korea', 'risk_score': 5, 'risk_category': 'High'}}",
+        "output": "{'flags': ['High Value', 'Sanctioned'], 'confidence': 'High', 'rule_hits': {'high_value': True, 'sanctioned_country': True, 'policy_triggered': False}}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869508.8041584,
+        "input": "{'txn': {'txn_id': 'TXN005', 'customer_id': '****', 'amount': 12000, 'country': 'North Korea', 'risk_score': 5, 'risk_category': 'High'}, 'route': ['retriever', 'reasoner', 'validator']}",
+        "output": "{'flags': ['High Value', 'Sanctioned'], 'risk_score': 5, 'confidence': 'High', 'risk_band': 'High'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869642.2408326,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "reasoning",
+        "timestamp": 1777869642.2421386,
+        "input": "{'txn_id': 'TXN001', 'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}",
+        "output": "{'reasoning': {'txn_id': 'TXN001', 'decision_basis': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'risk_factors': ['High Value Transaction'], 'policy_references': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'summary': 'Transaction exceeds AML threshold'}}"
+      },
+      {
+        "stage": "validation",
+        "timestamp": 1777869642.2429557,
+        "input": "{'txn': {'txn_id': 'TXN001', 'customer_id': '****', 'amount': 15000, 'country': 'Singapore', 'risk_score': 2, 'risk_category': 'High'}}",
+        "output": "{'flags': ['High Value'], 'confidence': 'Medium', 'rule_hits': {'high_value': True, 'sanctioned_country': False, 'policy_triggered': False}}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869642.2453718,
+        "input": "{'txn': {'txn_id': 'TXN001', 'customer_id': '****', 'amount': 15000, 'country': 'Singapore', 'risk_score': 2, 'risk_category': 'High'}, 'route': ['retriever', 'reasoner', 'validator']}",
+        "output": "{'flags': ['High Value'], 'risk_score': 2, 'confidence': 'Medium', 'risk_band': 'High'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869642.27464,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869642.2772694,
+        "input": "{'txn': {'txn_id': 'TXN002', 'customer_id': '****', 'amount': 500, 'country': 'Singapore', 'risk_score': 1, 'risk_category': 'Low'}, 'route': ['retriever']}",
+        "output": "{'flags': [], 'risk_score': 1, 'confidence': 'Low', 'risk_band': 'Low'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869642.3046682,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "reasoning",
+        "timestamp": 1777869642.3066635,
+        "input": "{'txn_id': 'TXN003', 'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}",
+        "output": "{'reasoning': {'txn_id': 'TXN003', 'decision_basis': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'risk_factors': ['High Value Transaction'], 'policy_references': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'summary': 'Transaction exceeds AML threshold'}}"
+      },
+      {
+        "stage": "validation",
+        "timestamp": 1777869642.30861,
+        "input": "{'txn': {'txn_id': 'TXN003', 'customer_id': '****', 'amount': 25000, 'country': 'Nigeria', 'risk_score': 6, 'risk_category': 'High'}}",
+        "output": "{'flags': ['High Value', 'Sanctioned'], 'confidence': 'High', 'rule_hits': {'high_value': True, 'sanctioned_country': True, 'policy_triggered': False}}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869642.3108864,
+        "input": "{'txn': {'txn_id': 'TXN003', 'customer_id': '****', 'amount': 25000, 'country': 'Nigeria', 'risk_score': 6, 'risk_category': 'High'}, 'route': ['retriever', 'reasoner', 'validator']}",
+        "output": "{'flags': ['High Value', 'Sanctioned'], 'risk_score': 6, 'confidence': 'High', 'risk_band': 'High'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869642.3461823,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869642.3497806,
+        "input": "{'txn': {'txn_id': 'TXN004', 'customer_id': '****', 'amount': 8000, 'country': 'India', 'risk_score': 1, 'risk_category': 'Low'}, 'route': ['retriever']}",
+        "output": "{'flags': [], 'risk_score': 1, 'confidence': 'Low', 'risk_band': 'Low'}"
+      },
+      {
+        "stage": "retrieval",
+        "timestamp": 1777869642.3742654,
+        "input": "{'query': 'Analyze AML risk for high value transaction'}",
+        "output": "{'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}"
+      },
+      {
+        "stage": "reasoning",
+        "timestamp": 1777869642.3757834,
+        "input": "{'txn_id': 'TXN005', 'docs': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged']}",
+        "output": "{'reasoning': {'txn_id': 'TXN005', 'decision_basis': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'risk_factors': ['High Value Transaction'], 'policy_references': ['Frequent transfers indicate structuring risk', 'Transactions above 10000 must be flagged'], 'summary': 'Transaction exceeds AML threshold'}}"
+      },
+      {
+        "stage": "validation",
+        "timestamp": 1777869642.3762925,
+        "input": "{'txn': {'txn_id': 'TXN005', 'customer_id': '****', 'amount': 12000, 'country': 'North Korea', 'risk_score': 5, 'risk_category': 'High'}}",
+        "output": "{'flags': ['High Value', 'Sanctioned'], 'confidence': 'High', 'rule_hits': {'high_value': True, 'sanctioned_country': True, 'policy_triggered': False}}"
+      },
+      {
+        "stage": "final_decision",
+        "timestamp": 1777869642.3777847,
+        "input": "{'txn': {'txn_id': 'TXN005', 'customer_id': '****', 'amount': 12000, 'country': 'North Korea', 'risk_score': 5, 'risk_category': 'High'}, 'route': ['retriever', 'reasoner', 'validator']}",
+        "output": "{'flags': ['High Value', 'Sanctioned'], 'risk_score': 5, 'confidence': 'High', 'risk_band': 'High'}"
+      }
+    ]
+  }
+]

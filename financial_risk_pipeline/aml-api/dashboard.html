@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AML Risk Dashboard</title>
+    <meta charset="UTF-8" />
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: #f4f6f9;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+
+        .card h2 {
+            margin: 0;
+            font-size: 22px;
+        }
+
+        .card p {
+            margin: 5px 0 0;
+            color: #777;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 30px;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 12px;
+            border-bottom: 1px solid #eee;
+            text-align: left;
+            font-size: 14px;
+        }
+
+        th {
+            background: #2c3e50;
+            color: white;
+        }
+
+        .high {
+            color: red;
+            font-weight: bold;
+        }
+
+        .low {
+            color: green;
+            font-weight: bold;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 15px;
+            border: none;
+            background: #2c3e50;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1a242f;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>AML Risk Monitoring Dashboard</h1>
+
+<button onclick="loadData()">Refresh Data</button>
+
+<div class="grid">
+    <div class="card">
+        <h2 id="total">0</h2>
+        <p>Total Transactions</p>
+    </div>
+
+    <div class="card">
+        <h2 id="high">0</h2>
+        <p>High Risk</p>
+    </div>
+
+    <div class="card">
+        <h2 id="flagged">0</h2>
+        <p>Flagged</p>
+    </div>
+
+    <div class="card">
+        <h2 id="low">0</h2>
+        <p>Low Risk</p>
+    </div>
+
+    <div class="card">
+        <h2 id="latency">0</h2>
+        <p>Avg Latency (ms)</p>
+    </div>
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th>Txn ID</th>
+            <th>Amount</th>
+            <th>Country</th>
+            <th>Risk Score</th>
+            <th>Risk Band</th>
+        </tr>
+    </thead>
+    <tbody id="tableBody"></tbody>
+</table>
+
+<script>
+async function loadData() {
+    try {
+        const summaryRes = await fetch("/summary");
+        const summary = await summaryRes.json();
+
+        document.getElementById("total").innerText = summary.total_transactions;
+        document.getElementById("high").innerText = summary.high_risk_count;
+        document.getElementById("flagged").innerText = summary.flagged_count;
+        document.getElementById("low").innerText = summary.low_risk_count;
+        document.getElementById("latency").innerText = summary.avg_retrieval_time_ms;
+
+        const txnsRes = await fetch("/transactions");
+        const txns = await txnsRes.json();
+
+        const tableBody = document.getElementById("tableBody");
+        tableBody.innerHTML = "";
+
+        txns.forEach(t => {
+            const txn = t.txn || {};
+            const row = document.createElement("tr");
+
+            const riskBand = t.risk_band || "Low";
+
+            row.innerHTML = `
+                <td>${txn.txn_id || "-"}</td>
+                <td>${txn.amount || "-"}</td>
+                <td>${txn.country || "-"}</td>
+                <td>${txn.risk_score || "-"}</td>
+                <td class="${riskBand === "High" ? "high" : "low"}">${riskBand}</td>
+            `;
+
+            tableBody.appendChild(row);
+        });
+
+    } catch (err) {
+        console.error("Error loading data:", err);
+    }
+}
+
+loadData();
+</script>
+
+</body>
+</html>

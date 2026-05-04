@@ -1,0 +1,362 @@
+
+<h2 class="sr-only">AML MCP Risk Dashboard — 5 transactions processed, 3 high risk, full agent metrics and lineage view</h2>
+
+<style>
+.dash-header { padding: 1rem 0 0.5rem; border-bottom: 0.5px solid var(--color-border-tertiary); margin-bottom: 1.25rem; }
+.metric-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; margin-bottom: 1.5rem; }
+.metric-card { background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 0.75rem 1rem; }
+.metric-label { font-size: 12px; color: var(--color-text-secondary); margin: 0 0 4px; }
+.metric-value { font-size: 22px; font-weight: 500; margin: 0; color: var(--color-text-primary); }
+.metric-sub { font-size: 11px; color: var(--color-text-tertiary); margin: 2px 0 0; }
+.section-title { font-size: 13px; font-weight: 500; color: var(--color-text-secondary); margin: 0 0 10px; text-transform: uppercase; letter-spacing: 0.04em; }
+.chart-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 1.5rem; }
+.chart-box { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1rem; }
+.full-box { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1rem; margin-bottom: 1.5rem; }
+.badge { display: inline-block; font-size: 11px; font-weight: 500; padding: 2px 8px; border-radius: 10px; }
+.badge-high { background: #FCEBEB; color: #A32D2D; }
+.badge-low { background: #EAF3DE; color: #3B6D11; }
+.badge-medium { background: #FAEEDA; color: #854F0B; }
+.badge-flag { background: #FAECE7; color: #993C1D; font-size: 10px; padding: 2px 6px; margin-right: 3px; }
+.txn-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.txn-table th { text-align: left; color: var(--color-text-secondary); font-weight: 500; font-size: 12px; padding: 6px 8px; border-bottom: 0.5px solid var(--color-border-tertiary); }
+.txn-table td { padding: 8px 8px; border-bottom: 0.5px solid var(--color-border-tertiary); color: var(--color-text-primary); vertical-align: middle; }
+.txn-table tr:last-child td { border-bottom: none; }
+.route-pill { display: inline-block; font-size: 10px; padding: 2px 6px; background: var(--color-background-info); color: var(--color-text-info); border-radius: 8px; margin-right: 2px; }
+.legend-row { display: flex; flex-wrap: wrap; gap: 12px; font-size: 12px; color: var(--color-text-secondary); margin-bottom: 8px; }
+.legend-dot { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 4px; vertical-align: middle; }
+.lineage-row { display: flex; align-items: center; gap: 6px; margin-bottom: 8px; font-size: 12px; }
+.lineage-stage { padding: 3px 10px; border-radius: 10px; font-size: 11px; font-weight: 500; }
+.lineage-arrow { color: var(--color-text-tertiary); font-size: 14px; }
+.tabs { display: flex; gap: 6px; margin-bottom: 12px; }
+.tab { padding: 4px 12px; border-radius: var(--border-radius-md); font-size: 12px; cursor: pointer; border: 0.5px solid var(--color-border-tertiary); background: transparent; color: var(--color-text-secondary); }
+.tab.active { background: var(--color-background-info); color: var(--color-text-info); border-color: var(--color-border-info); }
+.lineage-panel { display: none; }
+.lineage-panel.active { display: block; }
+</style>
+
+<div class="dash-header">
+  <div style="display:flex; justify-content:space-between; align-items:center;">
+    <div>
+      <p style="font-size:18px; font-weight:500; margin:0; color:var(--color-text-primary);">AML Risk Intelligence Dashboard</p>
+      <p style="font-size:12px; color:var(--color-text-secondary); margin:4px 0 0;">GenAI Multi-Agent MCP System — Databricks + FastAPI</p>
+    </div>
+    <span class="badge" style="background:#EAF3DE; color:#3B6D11; font-size:12px; padding:4px 12px;">5 transactions processed</span>
+  </div>
+</div>
+
+<div class="metric-grid">
+  <div class="metric-card">
+    <p class="metric-label">Total transactions</p>
+    <p class="metric-value">5</p>
+    <p class="metric-sub">all processed</p>
+  </div>
+  <div class="metric-card">
+    <p class="metric-label">High risk</p>
+    <p class="metric-value" style="color:#A32D2D;">3</p>
+    <p class="metric-sub">60% of total</p>
+  </div>
+  <div class="metric-card">
+    <p class="metric-label">Low risk</p>
+    <p class="metric-value" style="color:#3B6D11;">2</p>
+    <p class="metric-sub">40% of total</p>
+  </div>
+  <div class="metric-card">
+    <p class="metric-label">Flagged</p>
+    <p class="metric-value" style="color:#854F0B;">3</p>
+    <p class="metric-sub">require review</p>
+  </div>
+  <div class="metric-card">
+    <p class="metric-label">Avg retrieval</p>
+    <p class="metric-value">30ms</p>
+    <p class="metric-sub">RAG pipeline</p>
+  </div>
+</div>
+
+<div class="chart-row">
+  <div class="chart-box">
+    <p class="section-title">Risk band distribution</p>
+    <div class="legend-row">
+      <span><span class="legend-dot" style="background:#E24B4A;"></span>High risk 60%</span>
+      <span><span class="legend-dot" style="background:#639922;"></span>Low risk 40%</span>
+    </div>
+    <div style="position:relative; width:100%; height:180px;">
+      <canvas id="riskChart" role="img" aria-label="Pie chart: 3 high risk transactions, 2 low risk transactions">High risk: 3, Low risk: 2</canvas>
+    </div>
+  </div>
+  <div class="chart-box">
+    <p class="section-title">Confidence scoring</p>
+    <div class="legend-row">
+      <span><span class="legend-dot" style="background:#E24B4A;"></span>High</span>
+      <span><span class="legend-dot" style="background:#EF9F27;"></span>Medium</span>
+      <span><span class="legend-dot" style="background:#639922;"></span>Low</span>
+    </div>
+    <div style="position:relative; width:100%; height:180px;">
+      <canvas id="confChart" role="img" aria-label="Bar chart of confidence levels: High 2, Medium 1, Low 2">High: 2, Medium: 1, Low: 2</canvas>
+    </div>
+  </div>
+</div>
+
+<div class="chart-row">
+  <div class="chart-box">
+    <p class="section-title">Risk score by transaction</p>
+    <div style="position:relative; width:100%; height:200px;">
+      <canvas id="scoreChart" role="img" aria-label="Bar chart of risk scores per transaction">TXN001:2, TXN002:1, TXN003:6, TXN004:1, TXN005:5</canvas>
+    </div>
+  </div>
+  <div class="chart-box">
+    <p class="section-title">LLMOps agent latency (ms)</p>
+    <div class="legend-row">
+      <span><span class="legend-dot" style="background:#378ADD;"></span>Retrieval</span>
+      <span><span class="legend-dot" style="background:#1D9E75;"></span>Reasoning</span>
+      <span><span class="legend-dot" style="background:#D85A30;"></span>Validation</span>
+    </div>
+    <div style="position:relative; width:100%; height:200px;">
+      <canvas id="latencyChart" role="img" aria-label="Grouped bar chart of agent latency per transaction">Retrieval, reasoning, validation times per transaction</canvas>
+    </div>
+  </div>
+</div>
+
+<div class="full-box">
+  <p class="section-title">Transaction detail — agent outputs</p>
+  <table class="txn-table">
+    <thead>
+      <tr>
+        <th>TXN ID</th>
+        <th>Amount</th>
+        <th>Country</th>
+        <th>Risk score</th>
+        <th>Band</th>
+        <th>Confidence</th>
+        <th>Flags</th>
+        <th>Agent route</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="font-weight:500;">TXN001</td>
+        <td>$15,000</td>
+        <td>Singapore</td>
+        <td>2</td>
+        <td><span class="badge badge-high">High</span></td>
+        <td><span class="badge badge-medium">Medium</span></td>
+        <td><span class="badge badge-flag">High Value</span></td>
+        <td><span class="route-pill">retriever</span><span class="route-pill">reasoner</span><span class="route-pill">validator</span></td>
+      </tr>
+      <tr>
+        <td style="font-weight:500;">TXN002</td>
+        <td>$500</td>
+        <td>Singapore</td>
+        <td>1</td>
+        <td><span class="badge badge-low">Low</span></td>
+        <td><span class="badge badge-low">Low</span></td>
+        <td style="color:var(--color-text-tertiary); font-size:12px;">none</td>
+        <td><span class="route-pill">retriever</span></td>
+      </tr>
+      <tr>
+        <td style="font-weight:500;">TXN003</td>
+        <td>$25,000</td>
+        <td>Nigeria</td>
+        <td>6</td>
+        <td><span class="badge badge-high">High</span></td>
+        <td><span class="badge" style="background:#FCEBEB;color:#A32D2D;">High</span></td>
+        <td><span class="badge badge-flag">High Value</span><span class="badge badge-flag">Sanctioned</span></td>
+        <td><span class="route-pill">retriever</span><span class="route-pill">reasoner</span><span class="route-pill">validator</span></td>
+      </tr>
+      <tr>
+        <td style="font-weight:500;">TXN004</td>
+        <td>$8,000</td>
+        <td>India</td>
+        <td>1</td>
+        <td><span class="badge badge-low">Low</span></td>
+        <td><span class="badge badge-low">Low</span></td>
+        <td style="color:var(--color-text-tertiary); font-size:12px;">none</td>
+        <td><span class="route-pill">retriever</span></td>
+      </tr>
+      <tr>
+        <td style="font-weight:500;">TXN005</td>
+        <td>$12,000</td>
+        <td>North Korea</td>
+        <td>5</td>
+        <td><span class="badge badge-high">High</span></td>
+        <td><span class="badge" style="background:#FCEBEB;color:#A32D2D;">High</span></td>
+        <td><span class="badge badge-flag">High Value</span><span class="badge badge-flag">Sanctioned</span></td>
+        <td><span class="route-pill">retriever</span><span class="route-pill">reasoner</span><span class="route-pill">validator</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="full-box">
+  <p class="section-title">AI lineage trail — select transaction</p>
+  <div class="tabs">
+    <button class="tab active" onclick="showLineage('TXN001', this)">TXN001</button>
+    <button class="tab" onclick="showLineage('TXN003', this)">TXN003</button>
+    <button class="tab" onclick="showLineage('TXN005', this)">TXN005</button>
+  </div>
+  <div id="lineage-TXN001" class="lineage-panel active">
+    <div class="lineage-row">
+      <span class="lineage-stage" style="background:#E6F1FB;color:#185FA5;">retrieval</span>
+      <span class="lineage-arrow">→</span>
+      <span style="color:var(--color-text-secondary); font-size:12px;">Retrieved: "Frequent transfers indicate structuring risk", "Transactions above 10000 must be flagged"</span>
+    </div>
+    <div class="lineage-row">
+      <span class="lineage-stage" style="background:#E1F5EE;color:#0F6E56;">reasoning</span>
+      <span class="lineage-arrow">→</span>
+      <span style="color:var(--color-text-secondary); font-size:12px;">Risk factor: High Value Transaction — "Transaction exceeds AML threshold"</span>
+    </div>
+    <div class="lineage-row">
+      <span class="lineage-stage" style="background:#FAEEDA;color:#854F0B;">validation</span>
+      <span class="lineage-arrow">→</span>
+      <span style="color:var(--color-text-secondary); font-size:12px;">Flags: [High Value] · Confidence: Medium · high_value: true · sanctioned_country: false</span>
+    </div>
+    <div class="lineage-row">
+      <span class="lineage-stage" style="background:#FCEBEB;color:#A32D2D;">final decision</span>
+      <span class="lineage-arrow">→</span>
+      <span style="color:var(--color-text-secondary); font-size:12px;">Risk band: High · Score: 2 · Confidence: Medium</span>
+    </div>
+  </div>
+  <div id="lineage-TXN003" class="lineage-panel">
+    <div class="lineage-row">
+      <span class="lineage-stage" style="background:#E6F1FB;color:#185FA5;">retrieval</span>
+      <span class="lineage-arrow">→</span>
+      <span style="color:var(--color-text-secondary); font-size:12px;">Retrieved: "Frequent transfers indicate structuring risk", "Transactions above 10000 must be flagged"</span>
+    </div>
+    <div class="lineage-row">
+      <span class="lineage-stage" style="background:#E1F5EE;color:#0F6E56;">reasoning</span>
+      <span class="lineage-arrow">→</span>
+      <span style="color:var(--color-text-secondary); font-size:12px;">Risk factor: High Value Transaction — "Transaction exceeds AML threshold"</span>
+    </div>
+    <div class="lineage-row">
+      <span class="lineage-stage" style="background:#FAEEDA;color:#854F0B;">validation</span>
+      <span class="lineage-arrow">→</span>
+      <span style="color:var(--color-text-secondary); font-size:12px;">Flags: [High Value, Sanctioned] · Confidence: High · high_value: true · sanctioned_country: true</span>
+    </div>
+    <div class="lineage-row">
+      <span class="lineage-stage" style="background:#FCEBEB;color:#A32D2D;">final decision</span>
+      <span class="lineage-arrow">→</span>
+      <span style="color:var(--color-text-secondary); font-size:12px;">Risk band: High · Score: 6 · Confidence: High</span>
+    </div>
+  </div>
+  <div id="lineage-TXN005" class="lineage-panel">
+    <div class="lineage-row">
+      <span class="lineage-stage" style="background:#E6F1FB;color:#185FA5;">retrieval</span>
+      <span class="lineage-arrow">→</span>
+      <span style="color:var(--color-text-secondary); font-size:12px;">Retrieved: "Frequent transfers indicate structuring risk", "Transactions above 10000 must be flagged"</span>
+    </div>
+    <div class="lineage-row">
+      <span class="lineage-stage" style="background:#E1F5EE;color:#0F6E56;">reasoning</span>
+      <span class="lineage-arrow">→</span>
+      <span style="color:var(--color-text-secondary); font-size:12px;">Risk factor: High Value Transaction — "Transaction exceeds AML threshold"</span>
+    </div>
+    <div class="lineage-row">
+      <span class="lineage-stage" style="background:#FAEEDA;color:#854F0B;">validation</span>
+      <span class="lineage-arrow">→</span>
+      <span style="color:var(--color-text-secondary); font-size:12px;">Flags: [High Value, Sanctioned] · Confidence: High · high_value: true · sanctioned_country: true</span>
+    </div>
+    <div class="lineage-row">
+      <span class="lineage-stage" style="background:#FCEBEB;color:#A32D2D;">final decision</span>
+      <span class="lineage-arrow">→</span>
+      <span style="color:var(--color-text-secondary); font-size:12px;">Risk band: High · Score: 5 · Confidence: High</span>
+    </div>
+  </div>
+</div>
+
+<div class="full-box">
+  <p class="section-title">Policy references retrieved (RAG)</p>
+  <div style="display:flex; flex-direction:column; gap:8px;">
+    <div style="display:flex; align-items:flex-start; gap:10px; padding:10px; background:var(--color-background-secondary); border-radius:var(--border-radius-md);">
+      <span style="font-size:11px; padding:2px 8px; border-radius:8px; background:#E6F1FB; color:#185FA5; font-weight:500; white-space:nowrap;">Policy 1</span>
+      <span style="font-size:13px; color:var(--color-text-primary);">Transactions above 10,000 must be flagged</span>
+    </div>
+    <div style="display:flex; align-items:flex-start; gap:10px; padding:10px; background:var(--color-background-secondary); border-radius:var(--border-radius-md);">
+      <span style="font-size:11px; padding:2px 8px; border-radius:8px; background:#E6F1FB; color:#185FA5; font-weight:500; white-space:nowrap;">Policy 2</span>
+      <span style="font-size:13px; color:var(--color-text-primary);">Frequent transfers indicate structuring risk</span>
+    </div>
+    <div style="display:flex; align-items:flex-start; gap:10px; padding:10px; background:var(--color-background-secondary); border-radius:var(--border-radius-md);">
+      <span style="font-size:11px; padding:2px 8px; border-radius:8px; background:#E1F5EE; color:#0F6E56; font-weight:500; white-space:nowrap;">Triggered by</span>
+      <span style="font-size:13px; color:var(--color-text-primary);">TXN001, TXN003, TXN005 — all 3 high-risk transactions</span>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+function showLineage(id, btn) {
+  document.querySelectorAll('.lineage-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('lineage-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+
+const isDark = matchMedia('(prefers-color-scheme: dark)').matches;
+const textColor = isDark ? '#aaa' : '#888';
+const gridColor = isDark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.06)';
+
+new Chart(document.getElementById('riskChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['High risk', 'Low risk'],
+    datasets: [{ data: [3, 2], backgroundColor: ['#E24B4A', '#639922'], borderWidth: 0 }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false } }
+  }
+});
+
+new Chart(document.getElementById('confChart'), {
+  type: 'bar',
+  data: {
+    labels: ['High', 'Medium', 'Low'],
+    datasets: [{ data: [2, 1, 2], backgroundColor: ['#E24B4A', '#EF9F27', '#639922'], borderWidth: 0, borderRadius: 4 }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      x: { ticks: { color: textColor, font: { size: 11 } }, grid: { display: false } },
+      y: { ticks: { color: textColor, font: { size: 11 }, stepSize: 1 }, grid: { color: gridColor }, min: 0, max: 3 }
+    }
+  }
+});
+
+new Chart(document.getElementById('scoreChart'), {
+  type: 'bar',
+  data: {
+    labels: ['TXN001', 'TXN002', 'TXN003', 'TXN004', 'TXN005'],
+    datasets: [{
+      data: [2, 1, 6, 1, 5],
+      backgroundColor: ['#EF9F27', '#639922', '#E24B4A', '#639922', '#E24B4A'],
+      borderWidth: 0, borderRadius: 4
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      x: { ticks: { color: textColor, font: { size: 11 } }, grid: { display: false } },
+      y: { ticks: { color: textColor, font: { size: 11 } }, grid: { color: gridColor }, min: 0, max: 7 }
+    }
+  }
+});
+
+new Chart(document.getElementById('latencyChart'), {
+  type: 'bar',
+  data: {
+    labels: ['TXN001', 'TXN002', 'TXN003', 'TXN004', 'TXN005'],
+    datasets: [
+      { label: 'Retrieval', data: [32.9, 29.7, 28.6, 35.7, 25.0], backgroundColor: '#378ADD', borderWidth: 0, borderRadius: 2 },
+      { label: 'Reasoning', data: [0.83, 0, 1.94, 0, 0.50], backgroundColor: '#1D9E75', borderWidth: 0, borderRadius: 2 },
+      { label: 'Validation', data: [0.71, 0, 0.67, 0, 0.44], backgroundColor: '#D85A30', borderWidth: 0, borderRadius: 2 }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      x: { ticks: { color: textColor, font: { size: 11 } }, grid: { display: false } },
+      y: { ticks: { color: textColor, font: { size: 11 } }, grid: { color: gridColor }, title: { display: true, text: 'ms', color: textColor, font: { size: 11 } } }
+    }
+  }
+});
+</script>
