@@ -1,3 +1,84 @@
+# ============================================================
+# NTT DATA — AML Financial Risk Monitor (FRM)
+# Requirements File
+# Aligned to: GenAI & Multi-Agent Workshop (Data & AI Tracks)
+# ============================================================
 
-fastapi
-uvicorn
+
+# ------------------------------------------------------------
+# Track 1 – GenAI & Multi-Agent Architecture (MCP Orchestration)
+# ------------------------------------------------------------
+langchain==0.2.16                  # Agent orchestration, tool chaining, context propagation
+langchain-community==0.2.16        # Community integrations (loaders, vector stores, tools)
+openai==1.40.0                     # LLM backend (GPT-4 / compatible API)
+anthropic==0.31.0                  # Alternative LLM backend (Claude)
+tiktoken==0.7.0                    # Token counting for prompt management
+
+
+# ------------------------------------------------------------
+# Track 2 – RAG Pipeline Engineering
+# ------------------------------------------------------------
+sentence-transformers==3.0.1       # Embedding model: all-MiniLM-L6-v2 (used in pipeline)
+faiss-cpu==1.8.0                   # Vector index for similarity search (FAISS IndexFlatL2)
+numpy==1.26.4                      # Numerical operations for embeddings
+transformers==4.43.3               # Hugging Face model hub access
+torch==2.3.1                       # PyTorch backend for sentence-transformers
+
+
+# ------------------------------------------------------------
+# Track 3 – Data Engineering & Lakehouse Integration
+# ------------------------------------------------------------
+pyspark==3.5.1                     # Spark DataFrame API (Bronze/Silver/Gold medallion layers)
+pandas==2.2.2                      # DataFrame conversion (toPandas, to_dict)
+pyarrow==16.1.0                    # Parquet I/O, columnar data interchange
+delta-spark==3.2.0                 # Delta Lake support on Databricks / local Spark
+
+
+# ------------------------------------------------------------
+# Track 4 – Intelligent Document Processing
+# ------------------------------------------------------------
+pypdf==4.3.1                       # PDF parsing and text extraction
+python-docx==1.1.2                 # Word document extraction
+pdfplumber==0.11.2                 # Table and layout-aware PDF extraction
+pytesseract==0.3.10                # OCR for scanned documents (requires Tesseract binary)
+Pillow==10.4.0                     # Image processing for OCR pipeline
+
+
+# ------------------------------------------------------------
+# Track 5 – LLMOps / MLOps / Observability
+# ------------------------------------------------------------
+mlflow==2.14.3                     # Experiment tracking, model registry, run logging
+prometheus-client==0.20.0          # Metrics exposure for monitoring
+opentelemetry-sdk==1.25.0          # Distributed tracing (spans, traces)
+opentelemetry-exporter-otlp==1.25.0 # OTLP exporter for Grafana / Jaeger
+loguru==0.7.2                      # Structured logging (audit logs, LLMOps metrics)
+
+
+# ------------------------------------------------------------
+# Track 6 – Security & Governance
+# ------------------------------------------------------------
+python-jose==3.3.0                 # JWT token handling for RBAC / auth
+passlib==1.7.4                     # Password hashing utilities
+cryptography==42.0.8               # Encryption for PII masking and data protection
+pydantic==2.8.2                    # Input validation and schema enforcement
+
+
+# ------------------------------------------------------------
+# Track 7 – API & Dashboard Layer
+# ------------------------------------------------------------
+fastapi==0.111.1                   # REST API framework (main.py)
+uvicorn==0.30.3                    # ASGI server for FastAPI
+httpx==0.27.0                      # Async HTTP client for agent-to-agent calls
+jinja2==3.1.4                      # HTML templating for dashboard.html
+
+
+# ------------------------------------------------------------
+# Dev / Testing / CI-CD
+# ------------------------------------------------------------
+pytest==8.3.2                      # Unit and integration testing
+pytest-asyncio==0.23.8             # Async test support for FastAPI endpoints
+coverage==7.6.0                    # Code coverage reporting
+black==24.4.2                      # Code formatter
+ruff==0.5.4                        # Linter
+pre-commit==3.7.1                  # Git hooks for code quality gates
+python-dotenv==1.0.1               # Environment variable management (.env)
